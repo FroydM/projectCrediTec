@@ -32,6 +32,7 @@ public class MainView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         btnGestionSolicitantes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        btnGestionCreditoPersonal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +47,10 @@ public class MainView extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Creditos");
+
+        btnGestionCreditoPersonal.setText("Gestion Credito Personal");
+        jMenu3.add(btnGestionCreditoPersonal);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -100,6 +105,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenuItem btnGestionCreditoPersonal;
     public javax.swing.JMenuItem btnGestionSolicitantes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

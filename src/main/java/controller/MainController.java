@@ -6,6 +6,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.CreditoPersonalView;
 import view.MainView;
 import view.SolicitanteView;
 
@@ -19,6 +20,7 @@ public class MainController implements ActionListener{
     public MainController(MainView view) {
         this.view = view;
         this.view.btnGestionSolicitantes.addActionListener(this);
+        this.view.btnGestionCreditoPersonal.addActionListener(this);
     }
     
     @Override
@@ -28,5 +30,12 @@ public class MainController implements ActionListener{
             SolicitanteController sC = new SolicitanteController(panelSolicitante);
             this.view.mainPanel.addTab("Gestion solicitante", panelSolicitante);
         }
+        
+        if(e.getSource() == view.btnGestionCreditoPersonal) {
+            CreditoPersonalView panelCreditoPersonal = new CreditoPersonalView();
+            CreditoPersonalController cpC = new CreditoPersonalController(panelCreditoPersonal);
+            this.view.mainPanel.addTab("Gestion credito personal", panelCreditoPersonal);
+        }
+        
     }
 }
