@@ -25,7 +25,30 @@ public class Solicitante extends Persona{
         this.numTelefono = numTelefono;
         this.email = email;
     }
+    
+    public Solicitante(){
+        this.direccion = new String[4];
+    }
 
+    
+    public boolean solicitarPrestamo(TipoCredito pTipo, String prenda, double valorPrenda,double pInteresAnual, double pMonto, int pPlazoMeses, Moneda pMoneda) throws Exception{
+        if (pTipo == TipoCredito.PRENDARIO){
+            CreditoPrendario cp = new CreditoPrendario(prenda, valorPrenda, pInteresAnual,  pMonto,  pPlazoMeses,  pMoneda);
+            if(cp.verificarPrenda()== true){
+
+                System.out.println("Su credito ha sido aprobado");
+                
+                return true;
+            }
+            System.out.println("Su credito ha sido RECHAZADO");
+        }
+        return false;
+    }
+    
+    
+    
+    
+    
     public String getDireccion() {
         return direccion[0]+", "+direccion[1]+", "+direccion[2]+", "+direccion[3];
     }
