@@ -23,7 +23,7 @@ public class CreditoPrendario extends Credito {
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
         
-        amortizacionAmericana();
+        mostrarAmortizacion();
 
     }
     
@@ -35,6 +35,17 @@ public class CreditoPrendario extends Credito {
         }
         return false;
     }
+    
+    /**
+     * Función para calcular el moto total de los prestamos
+     * @return monto final del prestamo
+     */
+    public double calculoMontoFinal(){
+          
+        montoFinal= monto+costoFormalizacion()+costoHonorarios();
+            
+        return montoFinal;
+    }   
     
     public void mostrarAmortizacion(){
         

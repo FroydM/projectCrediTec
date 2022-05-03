@@ -32,6 +32,7 @@ public class Solicitante extends Persona{
 
     
     public boolean solicitarPrestamo(TipoCredito pTipo, String prenda, double valorPrenda,double pInteresAnual, double pMonto, int pPlazoMeses, Moneda pMoneda) throws Exception{
+        
         if (pTipo == TipoCredito.PRENDARIO){
             CreditoPrendario cp = new CreditoPrendario(prenda, valorPrenda, pInteresAnual,  pMonto,  pPlazoMeses,  pMoneda);
             if(cp.verificarPrenda()== true){
@@ -42,7 +43,20 @@ public class Solicitante extends Persona{
             }
             System.out.println("Su credito ha sido RECHAZADO");
         }
+
         return false;
+    }
+    
+    public boolean solicitarPrestamoHipotecario(char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda)throws Exception{
+        
+        if(pVivienda =='N'){
+            
+             CreditoHipotecarioTerreno ch = new CreditoHipotecarioTerreno ( pMonto,  pPlazoMeses, pInteresAnual, pMoneda); 
+            
+        } else{
+           
+        }
+       return false;
     }
     
     
