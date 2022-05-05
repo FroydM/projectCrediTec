@@ -157,15 +157,14 @@ public class Credito {
         
     }
     /**
-     * Función para calcular el monto de amortizacion con el estilo americano
+     * Función para calcular el monto de amortizacion con el estilo Francés
      * @return amortizacionList, lista con el calculo de amorización.
      */
-    
     public ArrayList amortizacionFrancesa(){
         ArrayList<double[]> amortizacionList = new ArrayList<> ();
         
         double deuda= calculoMontoFinal();
-        double montoCuota= calculoCuotaHipotecaria();
+        double montoCuota= calculoCuotaFrancesa();
         int numeroCuota=1;
         
         for (int i=0;  i<plazo; i++){
@@ -178,13 +177,40 @@ public class Credito {
             numeroCuota+=1; 
         }
         return amortizacionList;
- 
+        
     }
+    
     /**
-     * Función para calcular la cuota fija del prestamo hipotecario
+     * Función para calcular el monto de amortizacion con el estilo Alemán
+     * @return amortizacionList, lista con el calculo de amorización.
+     */
+    public ArrayList amortizacionAlemana(){
+        ArrayList<double[]> amortizacionList = new ArrayList<> ();
+        
+        double deuda= calculoMontoFinal();
+        double montoAmortizacion= calculoAmortizacionAleman();
+        double montoCuota=0;
+        int numeroCuota=1;
+        
+        for (int i=0;  i<plazo; i++){
+            montoCuota=calculoCuotaAlemana(numeroCuota);
+            
+            double amortizacionAlemana [] ={numeroCuota,montoCuota,calculoInteresAleman(numeroCuota),montoAmortizacion,deuda};
+            
+            amortizacionList.add(amortizacionAlemana);
+            
+            deuda-=montoAmortizacion;
+            numeroCuota+=1; 
+        }
+
+        return amortizacionList;
+    }
+
+    /**
+     * Función para calcular la cuota fija en el sistema frances
      * @return monto de la cuota
      */
-    public double calculoCuotaHipotecaria(){
+    public double calculoCuotaFrancesa(){
 
         double montoPrestamo=calculoMontoFinal();
         double cuotaFija;
@@ -202,7 +228,7 @@ public class Credito {
      * @return el monto del interes
      */
     public double calculoInteresHipotecario(int pCuota){
-        double cuoataMensual= calculoCuotaHipotecaria();
+        double cuoataMensual= calculoCuotaFrancesa();
         int cuotas= pCuota;
         double cuotainteresMensual=0;
         
@@ -221,7 +247,7 @@ public class Credito {
      * @return el monto de la amortización 
      */
     public double calculoAmortizacionHipotecaria(int pCuota){
-        double cuoataMensual= calculoCuotaHipotecaria();
+        double cuoataMensual= calculoCuotaFrancesa();
         int cuotas=pCuota;
         double cuotaAmortizacionMensual=0;
         
@@ -233,6 +259,57 @@ public class Credito {
 
         return Math.round(cuotaAmortizacionMensual);
     }
+    
+    /*Función para calcular la cuota fija correspondiente a la amortización del prestamo personal
+     *@return el monto de la amortización 
+     */
+    public double calculoAmortizacionAleman(){
+        double cuotaFija = monto/plazo;
+     
+        return Math.round(cuotaFija);
+    }
+    
+    /*Función para calcular el monto de interes en cada cuota del prestamo personal
+     *@return el monto de la cuota de interes 
+     */
+    public double calculoInteresAleman(int pNumeroCuota){
+        double cuotaInteres = (plazo-pNumeroCuota+1)*((monto*interesAnual)/plazo);
+        
+        return Math.round(cuotaInteres);
+    }
+    
+    /*Función para calcular el monto total de la cuota en cada cuota del prestamo personal
+     *@return el monto de la cuota 
+     */
+    public double calculoCuotaAlemana(int pNumeroCuota){
+        double cuotaTotal=0;
+        double cuotaAnterior;
+        
+        if(pNumeroCuota< plazo && pNumeroCuota==1 ){
+            
+           cuotaTotal = (monto/plazo)+interesAnual*monto;
+           
+           return cuotaTotal;
+              
+        }
+        if (pNumeroCuota<= plazo && pNumeroCuota>1 ){
+            cuotaAnterior = (monto/plazo)+interesAnual*monto;
+            
+            for (int i=1; i<pNumeroCuota;i++){
+                
+               // System.out.println(cuotaAnterior);
+                cuotaTotal = cuotaAnterior-interesAnual*(monto/plazo);
+                
+                cuotaAnterior=cuotaTotal;
+            }    
+        }
+        
+        return cuotaTotal;
+    }
+    
+    
+    
+    
     
     /**
      * Metodos accesores

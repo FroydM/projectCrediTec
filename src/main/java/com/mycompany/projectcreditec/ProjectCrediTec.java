@@ -6,11 +6,15 @@ import dao.SolicitanteDAO;
 import java.io.IOException;
 import model.Solicitante;
 import  model.Credito;
+import model.CreditoFiduciario;
 import model.CreditoHipotecarioTerreno;
 import model.CreditoHipotecarioVivienda;
+import model.CreditoPersonal;
 import model.CreditoPrendario;
+import model.Fiador;
 import model.Moneda;
 import static model.Moneda.COLONES;
+import model.Persona;
 import model.TipoCredito;
 import static model.TipoCredito.FIDUCIARIO;
 import static model.TipoCredito.PERSONAL;
@@ -77,7 +81,31 @@ public class ProjectCrediTec {
             
             System.out.println("EL MONTO FINAL DEL PRESTAMO ES : "+chv1.calculoMontoFinal()+"\n");
             */
+            /*
+            CreditoPersonal cp1 = new CreditoPersonal(700000, "colegiatura", 1000000, 5,0.15, COLONES);
             
+            //System.out.println("LA CUOTA  MENSUAL ES : "+cp1.calculoCuotaAlemana(1)+"\n");
+            //System.out.println("LA CUOTA INTERES MENSUAL ES : "+cp1.calculoInteresAleman(1)+"\n");
+            //System.out.println("LA CUOTA AMORTIZACION MENSUAL ES : "+cp1.calculoAmortizacionAleman()+"\n");
+            
+            cp1.mostrarAmortizacion();*/
+           /*
+           CreditoFiduciario cf1 = new CreditoFiduciario(15000000,120,0.05,COLONES);
+           System.out.println(Math.round(cf1.calculoMontoFinal()));
+           System.out.println(Math.round(cf1.calculoCuotaFrancesa())); 
+           
+           Fiador f1 = new Fiador( 116630093,"Melanie", "Jimenez",  "Sandoval",  2000000,  1685000);
+           Fiador f2 = new Fiador( 9101897,"Flora", "Sandoval",  "Cordero",  1300000,  1045000); 
+           
+           cf1.agregarFiador(f1);
+           cf1.agregarFiador(f2);
+           
+           System.out.println(cf1.verificarSalarioBruto());
+           
+           System.out.println(cf1.verificarSalarioLiquido());*/
+           
+         
+          
             
     }
 }

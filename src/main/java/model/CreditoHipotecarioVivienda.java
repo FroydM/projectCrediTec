@@ -26,8 +26,6 @@ public class CreditoHipotecarioVivienda extends Credito {
         
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;
-        
-        //solicitarAmortizacionFrancesa();
     }
     
     public double costoAvaluo(){ 

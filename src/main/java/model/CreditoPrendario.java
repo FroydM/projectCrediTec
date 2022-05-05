@@ -22,18 +22,13 @@ public class CreditoPrendario extends Credito {
         super(tipo, pMonto, pPlazoMeses,pInteresAnual, pMoneda);
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
-        
-        mostrarAmortizacion();
 
     }
     
     public boolean verificarPrenda(){
         double calculoPrenda = (calculoMontoFinal()*0.85)/1;
         
-        if(getValorPrenda()> calculoPrenda){
-            return true;
-        }
-        return false;
+        return getValorPrenda()> calculoPrenda;
     }
     
     /**
