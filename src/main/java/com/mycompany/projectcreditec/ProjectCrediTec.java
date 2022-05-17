@@ -19,11 +19,11 @@ public class ProjectCrediTec {
 
     public static void main(String[] args) {
             
-            /**MainView vw = new MainView();
+            MainView vw = new MainView();
             MainController sC = new MainController(vw);
-            vw.setVisible(true);**/
+            vw.setVisible(true);
             try {
-                PdfApi pdf = new PdfApi("C:\\Users\\Public\\Documents\\example.pdf");
+                //PdfApi pdf = new PdfApi("C:\\Users\\Public\\Documents\\example.pdf");
         } catch (Exception e) {
                 System.out.println(e.getMessage());
         }
