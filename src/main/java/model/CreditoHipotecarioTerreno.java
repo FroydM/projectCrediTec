@@ -21,7 +21,6 @@ public class CreditoHipotecarioTerreno extends Credito {
     public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
         super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda);
         
-        amortizacionFrancesa();
     }
     
     public void mostrarAmortizacion(){
@@ -34,20 +33,10 @@ public class CreditoHipotecarioTerreno extends Credito {
     }
     
     /**
-     * Función para calcular el costo del avaluo en préstamos hipotecarios
-     * @return evaluo
-     */
-    public double costoAvaluo(){ 
-        
-        super.setEvaluo(super.monto*super.porcentajeEvaluo);
-            
-        return super.getEvaluo();
-      
-    }
-    /**
      * Función para calcular el costo de la formalización de préstamos
      * @return formalizacion
      */
+    @Override
     public double costoFormalizacion(){
 
         super.formalizacion = super.monto*0.0075;
@@ -58,7 +47,8 @@ public class CreditoHipotecarioTerreno extends Credito {
      * Función para calcular el moto total de los prestamos
      * @return monto final del prestamo
      */
-    public double calculoFinal(){
+    @Override
+    public double calculoMontoFinal(){
 
         montoFinal= monto+costoAvaluo()+costoFormalizacion()+costoHonorarios();
            

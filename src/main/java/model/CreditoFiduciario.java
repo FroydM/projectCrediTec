@@ -14,16 +14,14 @@ import java.util.Arrays;
 public class CreditoFiduciario extends Credito {
     
     private ArrayList<Fiador> fiadores;
-    
-    private static TipoCredito tipo= TipoCredito.FIDUCIARIO;
-    
+  
     public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
         
        fiadores= new ArrayList<>();
 
     }
-    
+    @Override
     public double calculoMontoFinal(){
         
         montoFinal=monto+ costoFormalizacion();
@@ -31,11 +29,11 @@ public class CreditoFiduciario extends Credito {
         return montoFinal;
     }
     
-    public void agregarFiador(Fiador pFiador){
+    public void agregarFiador(int cedula, String nombre, String priApellido, String segApellido, double salarioBrutoMensual, double salarioLiquido){
         
-        //Fiador fiador = new Fiador(pCedula,pNombre,pPriApellido,pSegApellido,pSalarioBrutoMensual,pSalarioLiquido);
+        Fiador fiador = new Fiador(cedula,nombre,priApellido,segApellido,salarioBrutoMensual,salarioLiquido);
         
-        fiadores.add(pFiador);
+        fiadores.add(fiador);
     }
     
     public boolean verificarSalarioBruto(){
@@ -71,7 +69,7 @@ public class CreditoFiduciario extends Credito {
     
     public void mostrarAmortizacion(){
         
-         ArrayList<double[]> info =  amortizacionFrancesa();
+        ArrayList<double[]> info =  amortizacionFrancesa();
         
         for (int i=0; i<info.size(); i++){
            System.out.println(Arrays.toString(info.get(i)));

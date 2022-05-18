@@ -11,7 +11,8 @@ import java.util.Arrays;
  *
  * @author Melanie and Froyd
  */
-public class Credito {
+abstract public class Credito {
+    
     private String id;
     private TipoCredito tipo;
     protected double monto;
@@ -30,7 +31,7 @@ public class Credito {
     
     protected final double porcentajeEvaluo = 0.0065;
     private final double honorarioMinimo = 60500;
-    private int auxid=0;
+    static private int auxid = 0;
     
     /**
      * Constructor de objetos tipo Credito vacío.
@@ -61,9 +62,7 @@ public class Credito {
     }
     
     
-    public double calculoMontoFinal(){
-        return 0;
-    }
+    abstract public double calculoMontoFinal();
     
     /**
      * Función para calcular el costo de la formalización de préstamos
@@ -75,6 +74,19 @@ public class Credito {
 
         return formalizacion;
     }
+    
+    /**
+     * Función para calcular el costo del avaluo en préstamos hipotecarios
+     * @return evaluo
+     */
+    public double costoAvaluo(){ 
+        
+        setEvaluo(monto*porcentajeEvaluo);
+            
+        return getEvaluo();
+      
+    }
+    
     /**
      * Función para calcular los honorarios del prestamo
      * @return honorarios
@@ -185,7 +197,7 @@ public class Credito {
      * @return amortizacionList, lista con el calculo de amorización.
      */
     public ArrayList amortizacionAlemana(){
-        ArrayList<double[]> amortizacionList = new ArrayList<> ();
+        ArrayList<double[]> amortizacionList = new ArrayList<>();
         
         double deuda= calculoMontoFinal();
         double montoAmortizacion= calculoAmortizacionAleman();

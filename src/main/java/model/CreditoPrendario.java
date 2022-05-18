@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,11 +14,10 @@ import java.util.Arrays;
 public class CreditoPrendario extends Credito {
     private String prenda;
     private double valorPrenda;
-    
-    private static TipoCredito tipo= TipoCredito.PRENDARIO;
+   
 
     public CreditoPrendario(String prenda, double valorPrenda, double pInteresAnual, double pMonto, int pPlazoMeses, Moneda pMoneda) throws Exception {
-        super(tipo, pMonto, pPlazoMeses,pInteresAnual, pMoneda);
+        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda);
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
 
@@ -35,6 +33,7 @@ public class CreditoPrendario extends Credito {
      * Función para calcular el moto total de los prestamos
      * @return monto final del prestamo
      */
+    @Override
     public double calculoMontoFinal(){
           
         montoFinal= monto+costoFormalizacion()+costoHonorarios();

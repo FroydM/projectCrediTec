@@ -15,27 +15,26 @@ public class CreditoHipotecarioVivienda extends Credito {
     double ingresoFamiliar;
     char vivienda;
     double bono=0;
-    
-    private static TipoCredito tipo= TipoCredito.HIPOTECARIOVIVIENDA;
 
     public CreditoHipotecarioVivienda() {
     }
-
+    /**
+     * 
+     * @param pIngresoFamiliar
+     * @param pVivienda
+     * @param pMonto
+     * @param pPlazoMeses
+     * @param pInteresAnual
+     * @param pMoneda
+     * @throws Exception 
+     */
     public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
+        super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
         
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;
     }
     
-    public double costoAvaluo(){ 
-        
-        super.setEvaluo(super.getMonto()*super.porcentajeEvaluo);
-            
-        return super.getEvaluo();
-      
-    }
-
     @Override
     public double costoFormalizacion(){
 
@@ -48,6 +47,7 @@ public class CreditoHipotecarioVivienda extends Credito {
      * Función para calcular el moto total de los prestamos
      * @return monto final del prestamo
      */
+    @Override
     public double calculoMontoFinal(){
         
         if (vivienda == 'S'){

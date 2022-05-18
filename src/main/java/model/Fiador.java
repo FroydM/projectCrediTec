@@ -15,6 +15,7 @@ public class Fiador extends Persona {
     }
 
     public Fiador() {
+    
     }
     
     

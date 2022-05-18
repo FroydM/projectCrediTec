@@ -15,10 +15,9 @@ public class CreditoPersonal extends Credito {
     private String razonCredito;
     private double salario;
     
-    private static TipoCredito tipo= TipoCredito.PERSONAL;
     
     public CreditoPersonal(double pSalario, String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
+        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
         
         this.salario = pSalario;
     }
@@ -31,7 +30,7 @@ public class CreditoPersonal extends Credito {
         
         return salarioMinimo>primeraCuota;
     }
-    
+    @Override
     public double calculoMontoFinal(){
         
         montoFinal=monto+ costoFormalizacion();
@@ -47,5 +46,20 @@ public class CreditoPersonal extends Credito {
            System.out.println(Arrays.toString(info.get(i)));
         }
     }
-    
+
+    public String getRazonCredito() {
+        return razonCredito;
+    }
+
+    public void setRazonCredito(String razonCredito) {
+        this.razonCredito = razonCredito;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 }
