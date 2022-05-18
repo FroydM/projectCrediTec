@@ -5,6 +5,8 @@ import controller.SolicitanteController;
 import dao.SolicitanteDAO;
 import java.io.IOException;
 import model.Solicitante;
+import services.MailingApi;
+import services.PdfApi;
 import  model.Credito;
 import model.CreditoFiduciario;
 import model.CreditoHipotecarioTerreno;
@@ -33,8 +35,13 @@ public class ProjectCrediTec {
             
            /*MainView vw = new MainView();
             MainController sC = new MainController(vw);
-            vw.setVisible(true);*/
             
+            vw.setVisible(true);
+            try {
+                //PdfApi pdf = new PdfApi("C:\\Users\\Public\\Documents\\example.pdf");
+        } catch (Exception e) {
+                System.out.println(e.getMessage());
+        }
             /*Credito c1 = new Credito (HIPOTECARIO, 10000000,12 , COLONES);
             Credito c2 = new Credito (PERSONAL, 15000000,12 , COLONES);
             Credito c3 = new Credito (FIDUCIARIO, 25000000,12 , COLONES);
@@ -103,9 +110,6 @@ public class ProjectCrediTec {
            System.out.println(cf1.verificarSalarioBruto());
            
            System.out.println(cf1.verificarSalarioLiquido());*/
-           
-         
-          
             
     }
 }
