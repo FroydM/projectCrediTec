@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Melanie and Froyd
@@ -12,7 +14,7 @@ public class Solicitante extends Persona{
     final private String[] direccion;
     private int numTelefono;
     private String email;
-
+    private ArrayList<Credito> creditosSolicitados;
     
     public Solicitante(int cedula, String nombre, String priApellido, String segApellido, double salarioBrutoMensual,
             double salarioLiquido,int numTelefono, String email, String provincia,String canton,String distrito, String otrasReferencias) {
@@ -24,6 +26,7 @@ public class Solicitante extends Persona{
         this.direccion[3] = otrasReferencias;
         this.numTelefono = numTelefono;
         this.email = email;
+        this.creditosSolicitados = new ArrayList<>();
     }
     
     public Solicitante(){

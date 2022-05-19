@@ -24,27 +24,27 @@ public class TipoCambioDolar {
 //Conección con la pagina del Banco Central de Costa Rica        
         final String url =
                 "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual+"&Filtro=0";
+        final String newUrl = "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=3141&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual;
         try{
-            final Document doc = Jsoup.connect(url).get();
+            final Document doc = Jsoup.connect(newUrl).get();
 
 //Recorer las filas de la tabla            
             for (Element row : doc.select("table tr")){
                 
-                if (row.select("td.celda400:nth-of-type(1)").text().equals("")){
-                 
-                 continue;
-             }
-             else{
+                if (row.select("td.celda17:nth-of-type(1)").text().equals("")){
                     
+                 continue;
+             }else{
+                    System.out.println(row.select("td.celda17:nth-of-type(2)"));
                  final String ticket=
-                         row.select("td:nth-of-type(3)").text();
-
+                         row.select("td:celda3141").text();
+ 
                  tipoCambio = Double.parseDouble(ticket.replace(",", "."));
              }
          }           
    
         }catch(Exception ex){
-       
+            System.out.println(ex.getMessage());
         }
 
         return tipoCambio;
