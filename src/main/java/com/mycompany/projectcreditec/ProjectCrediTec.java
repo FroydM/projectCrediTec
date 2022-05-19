@@ -33,7 +33,7 @@ public class ProjectCrediTec {
 
     public static void main(String[] args) throws Exception {
             
-           /*MainView vw = new MainView();
+           MainView vw = new MainView();
             MainController sC = new MainController(vw);
             
             vw.setVisible(true);
@@ -111,6 +111,6 @@ public class ProjectCrediTec {
            
            System.out.println(cf1.verificarSalarioLiquido());*/
            
-           System.out.println(services.TipoCambioDolar.conectarTED());
+           System.out.println(services.TasaEfectivaDolares.conectarTED());
     }
 }

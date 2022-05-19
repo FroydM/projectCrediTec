@@ -7,6 +7,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.CreditoPersonalView;
+import view.CreditoView;
 import view.MainView;
 import view.SolicitanteView;
 
@@ -32,9 +33,9 @@ public class MainController implements ActionListener{
         }
         
         if(e.getSource() == view.btnGestionCreditoPersonal) {
-            CreditoPersonalView panelCreditoPersonal = new CreditoPersonalView();
-            CreditoPersonalController cpC = new CreditoPersonalController(panelCreditoPersonal);
-            this.view.mainPanel.addTab("Gestion credito personal", panelCreditoPersonal);
+            CreditoView panelCredito = new CreditoView();
+            CreditoController cpC = new CreditoController(panelCredito);
+            this.view.mainPanel.addTab("Gestion credito personal", panelCredito);
         }
         
     }
