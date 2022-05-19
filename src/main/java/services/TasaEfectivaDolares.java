@@ -11,7 +11,7 @@ import org.jsoup.nodes.Element;
  *
  * @author Melanie & Froyd
  */
-public class TipoCambioDolar {
+public class TasaEfectivaDolares {
     
     public static double  conectarTED() throws Exception {
         
@@ -22,24 +22,22 @@ public class TipoCambioDolar {
         String fechaActual= fecha.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
         
 //Conección con la pagina del Banco Central de Costa Rica        
-        final String url =
-                "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual+"&Filtro=0";
+       
         final String newUrl = "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=3141&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual;
         try{
             final Document doc = Jsoup.connect(newUrl).get();
 
 //Recorer las filas de la tabla            
             for (Element row : doc.select("table tr")){
-                
-                if (row.select("td.celda17:nth-of-type(1)").text().equals("")){
+                               
+                if (row.select("td.celda3141:nth-of-type(1)").text().equals("")){
                     
                  continue;
              }else{
-                    System.out.println(row.select("td.celda17:nth-of-type(2)"));
-                 final String ticket=
-                         row.select("td:celda3141").text();
+                    final String ticket=
+                        row.select("td.celda3141:nth-of-type(2)").text();
  
-                 tipoCambio = Double.parseDouble(ticket.replace(",", "."));
+                   tipoCambio = Double.parseDouble(ticket.replace(",", "."));
              }
          }           
    

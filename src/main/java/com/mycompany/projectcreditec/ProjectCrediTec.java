@@ -111,6 +111,6 @@ public class ProjectCrediTec {
            
            System.out.println(cf1.verificarSalarioLiquido());*/
            
-           System.out.println(services.TipoCambioDolar.conectarTED());
+           System.out.println(services.TasaEfectivaDolares.conectarTED());
     }
 }
