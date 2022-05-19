@@ -22,8 +22,8 @@ public class TipoCambioDolar {
         String fechaActual= fecha.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
         
 //Conección con la pagina del Banco Central de Costa Rica        
-        final String url =
-                "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual+"&Filtro=0";
+        //final String url =
+        //      "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual+"&Filtro=0";
         final String newUrl = "https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=3141&Idioma=1&FecInicial="+fechaActual+"&FecFinal="+fechaActual;
         try{
             final Document doc = Jsoup.connect(newUrl).get();
