@@ -16,8 +16,8 @@ public class CreditoPrendario extends Credito {
     private double valorPrenda;
    
 
-    public CreditoPrendario(String prenda, double valorPrenda, double pInteresAnual, double pMonto, int pPlazoMeses, Moneda pMoneda) throws Exception {
-        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda);
+    public CreditoPrendario(String prenda, double valorPrenda, double pMonto,double pInteresAnual , int pPlazoMeses, Moneda pMoneda,TipoTasa tipoTaza) {
+        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda,tipoTaza);
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
 

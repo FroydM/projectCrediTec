@@ -28,8 +28,8 @@ public class CreditoHipotecarioVivienda extends Credito {
      * @param pMoneda
      * @throws Exception 
      */
-    public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
+    public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
+        super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda ,tipoTasa);
         
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;

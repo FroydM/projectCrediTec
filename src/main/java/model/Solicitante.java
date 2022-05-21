@@ -14,7 +14,7 @@ public class Solicitante extends Persona{
     final private String[] direccion;
     private int numTelefono;
     private String email;
-    private ArrayList<Credito> creditosSolicitados;
+    public ArrayList<Credito> creditosSolicitados;
     
     public Solicitante(int cedula, String nombre, String priApellido, String segApellido, double salarioBrutoMensual,
             double salarioLiquido,int numTelefono, String email, String provincia,String canton,String distrito, String otrasReferencias) {
@@ -33,37 +33,41 @@ public class Solicitante extends Persona{
         this.direccion = new String[4];
     }
 
-    
-    public boolean solicitarPrestamo(TipoCredito pTipo, String prenda, double valorPrenda,double pInteresAnual, double pMonto, int pPlazoMeses, Moneda pMoneda) throws Exception{
-        
-        if (pTipo == TipoCredito.PRENDARIO){
-            CreditoPrendario cp = new CreditoPrendario(prenda, valorPrenda, pInteresAnual,  pMonto,  pPlazoMeses,  pMoneda);
-            if(cp.verificarPrenda()== true){
-
-                System.out.println("Su credito ha sido aprobado");
-                
-                return true;
-            }
-            System.out.println("Su credito ha sido RECHAZADO");
+    public void agregarCreditoPersonal(double monto,int plazo,double interezAnual,Moneda moneda, double taza,TipoTasa tipoTasa,String razonCredito) {
+        CreditoPersonal newCredito = new CreditoPersonal(razonCredito,monto, plazo, interezAnual, moneda,tipoTasa);
+        if (newCredito.verificarSalario(getSalarioLiquido())) {
+            creditosSolicitados.add(newCredito);
+        }else {
+            System.out.println("Tirar Error");
         }
-
-        return false;
     }
     
-    public boolean solicitarPrestamoHipotecario(char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda)throws Exception{
-        
-        if(pVivienda =='N'){
-            
-             CreditoHipotecarioTerreno ch = new CreditoHipotecarioTerreno ( pMonto,  pPlazoMeses, pInteresAnual, pMoneda); 
-            
-        } else{
-           
+    public void agregarCreditoPrendario(double monto,int plazo,double interezAnual,Moneda moneda, double taza,TipoTasa tipoTasa,String prenda,double valorPrenda) {
+        CreditoPrendario newCredito = new CreditoPrendario(prenda,valorPrenda,monto, interezAnual, plazo, moneda,tipoTasa);
+        if(newCredito.verificarPrenda()) {
+            creditosSolicitados.add(newCredito);
         }
-       return false;
     }
     
+    public void agregarCreditoFiduciario(double monto,int plazo,double interezAnual,Moneda moneda, double taza,TipoTasa tipoTasa,ArrayList<Fiador> fiadores){
+        CreditoFiduciario newCredito = new CreditoFiduciario(monto, plazo, interezAnual, moneda, tipoTasa);
+        for(Fiador fiador : fiadores) {
+            newCredito.agregarFiador(fiador.getCedula(), fiador.getNombre(), fiador.getPriApellido(), fiador.getSegApellido(), fiador.getSalarioBrutoMensual(), fiador.getSalarioLiquido());
+        }
+        if(newCredito.verificarSalarioBruto() && newCredito.verificarSalarioLiquido()) {
+            creditosSolicitados.add(newCredito);
+        }
+    }
     
+    public void agregarCreditoHipotecarioTerreno(double monto,int plazo,double interezAnual,Moneda moneda,TipoTasa tipoTasa) {
+        CreditoHipotecarioTerreno newCredito = new CreditoHipotecarioTerreno(monto, plazo, interezAnual, moneda, tipoTasa);
+        creditosSolicitados.add(newCredito);
+    }
     
+    public void agregarCreditoHipotecarioVivienda(double monto,int plazo,double interezAnual,Moneda moneda, double taza,TipoTasa tipoTasa,double ingresoFamiliar,char bono){
+        CreditoHipotecarioVivienda newCredito = new CreditoHipotecarioVivienda(ingresoFamiliar, bono, monto, plazo, interezAnual, moneda, tipoTasa);
+        creditosSolicitados.add(newCredito);
+    }
     
     
     public String getDireccion() {

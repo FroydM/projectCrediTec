@@ -1,6 +1,7 @@
 
 package model;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.util.Arrays;
  *
  * @author Melanie and Froyd
  */
-abstract public class Credito {
+abstract public class Credito implements Serializable{
     
     private String id;
     private TipoCredito tipo;
@@ -27,8 +28,7 @@ abstract public class Credito {
     private double honorario;
     private double interesAnual;
     private double porcentajeInteres;
-
-    
+    private TipoTasa tipoTasa;
     protected final double porcentajeEvaluo = 0.0065;
     private final double honorarioMinimo = 60500;
     static private int auxid = 0;
@@ -48,7 +48,7 @@ abstract public class Credito {
      * @param pMoneda, indica la moneda en que se solicitó el crédito.
      * @throws java.lang.Exception
      */
-    public Credito (TipoCredito pTipo, double pMonto,int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception{
+    public Credito (TipoCredito pTipo, double pMonto,int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tasa) {
         
         this.tipo = pTipo;
         this.monto = pMonto;
@@ -56,7 +56,7 @@ abstract public class Credito {
         this.interesAnual = pInteresAnual;
         this.moneda = pMoneda;
         this.fechaSolicitud = LocalDate.now();
-        
+        this.tipoTasa = tasa;
         this.id = "CRE000"+auxid;
         auxid+=1;
     }
@@ -345,6 +345,14 @@ abstract public class Credito {
 
     public void setEvaluo(double evaluo) {
         this.evaluo = evaluo;
+    }
+
+    public TipoTasa getTipoTasa() {
+        return tipoTasa;
+    }
+
+    public void setTipoTasa(TipoTasa tipoTasa) {
+        this.tipoTasa = tipoTasa;
     }
     
    

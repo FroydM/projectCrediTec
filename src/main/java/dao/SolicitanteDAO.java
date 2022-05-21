@@ -19,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import model.Solicitante;
 import java.util.Arrays;
+import model.Credito;
 import system.DAOException;
 
 
@@ -58,7 +59,9 @@ public class SolicitanteDAO {
         final String NOMBRE_ARCHIVO = URL+ cedulaEncriptada+".dat";
         InputStream fileInput = new FileInputStream(NOMBRE_ARCHIVO);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-        return (Solicitante)objectInput.readObject();
+        Solicitante datos = (Solicitante)objectInput.readObject();
+        objectInput.close();
+        return datos;
     }
     /**
      * Es funcion se encarga de recorrer todo los documentos almacendos que contiene la informacion de los solicitantes
@@ -73,7 +76,9 @@ public class SolicitanteDAO {
             InputStream fileInput = new FileInputStream(URL+fileName);
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
             listado.add((Solicitante)objectInput.readObject());
+            objectInput.close();
         }
+        
         return listado;
     }
     /**
@@ -89,7 +94,13 @@ public class SolicitanteDAO {
         final String NOMBRE_ARCHIVO = URL+ cedulaEncriptada+".dat";
         File objectDoc = new File(NOMBRE_ARCHIVO);
         objectDoc.delete();
-    } 
+    }
+    
+    static public void actualizarSolicitanteById(Solicitante dataSolicitante) throws DAOException, IOException,ClassNotFoundException {
+        eliminarSolicitanteById(dataSolicitante.getCedula());
+        guardarSolicitante(dataSolicitante);
+       
+    }
     
     /**
      * Verifica si el numero de cedula ya se encuentra registrado

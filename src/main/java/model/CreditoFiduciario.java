@@ -15,8 +15,8 @@ public class CreditoFiduciario extends Credito {
     
     private ArrayList<Fiador> fiadores;
   
-    public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
+    public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, tipoTasa);
         
        fiadores= new ArrayList<>();
 

@@ -13,22 +13,21 @@ import java.util.Arrays;
  */
 public class CreditoPersonal extends Credito {
     private String razonCredito;
-    private double salario;
     
     
-    public CreditoPersonal(double pSalario, String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda) throws Exception {
-        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda );
-        
-        this.salario = pSalario;
+    
+    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
+        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,tipoTasa);
+        this.razonCredito = pRazonCredito;
     }
     
-    public boolean verificarSalario(){
+    public boolean verificarSalario(double salario){
         int pNumeroCuota=1;
         
         double primeraCuota= calculoCuotaAlemana(pNumeroCuota);
         double salarioMinimo = primeraCuota+(primeraCuota*0.1);
         
-        return salarioMinimo>primeraCuota;
+        return salarioMinimo<=salario;
     }
     @Override
     public double calculoMontoFinal(){
@@ -53,13 +52,5 @@ public class CreditoPersonal extends Credito {
 
     public void setRazonCredito(String razonCredito) {
         this.razonCredito = razonCredito;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
     }
 }
