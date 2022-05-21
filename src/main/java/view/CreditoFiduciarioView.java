@@ -26,19 +26,112 @@ public class CreditoFiduciarioView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txt1Apellido = new javax.swing.JTextField();
+        txt2Apellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtSalarioBruto = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtSalarioLiquido = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        spListaFiador = new javax.swing.JScrollPane();
+        listaFiador = new javax.swing.JList<>();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Fiador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Cédula:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 39, -1, -1));
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 236, -1));
+
+        jLabel2.setText("Nombre:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        jLabel3.setText("Segundo Apellido:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+
+        jLabel4.setText("Primer Apellido:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 240, -1));
+        jPanel1.add(txt1Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 240, -1));
+        jPanel1.add(txt2Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 240, -1));
+
+        jLabel5.setText("Salario Bruto:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        txtSalarioBruto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioBrutoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtSalarioBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 240, -1));
+
+        jLabel6.setText("Salario Líquido:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        jPanel1.add(txtSalarioLiquido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 240, -1));
+
+        jButton1.setText("Verificar");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 382, 100, 30));
+
+        spListaFiador.setViewportView(listaFiador);
+
+        jPanel1.add(spListaFiador, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 230, 340));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
+    private void txtSalarioBrutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioBrutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioBrutoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JList<String> listaFiador;
+    public javax.swing.JScrollPane spListaFiador;
+    public javax.swing.JTextField txt1Apellido;
+    public javax.swing.JTextField txt2Apellido;
+    public javax.swing.JTextField txtCedula;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtSalarioBruto;
+    public javax.swing.JTextField txtSalarioLiquido;
     // End of variables declaration//GEN-END:variables
 }
