@@ -10,6 +10,8 @@ package view;
  */
 public class CreditoPersonalView extends javax.swing.JPanel {
 
+    
+
     /**
      * Creates new form CreditoPersonal
      */
@@ -26,13 +28,25 @@ public class CreditoPersonalView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtCuadrito = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtRazon = new javax.swing.JTextField();
+        btnVerificar = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardar.setText("guardar");
+        jLabel2.setText("Salario:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 230, -1));
+
+        jLabel3.setText("Razón:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanel1.add(txtRazon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 230, -1));
+
+        btnVerificar.setText("Verificar");
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -40,32 +54,25 @@ public class CreditoPersonalView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCuadrito, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addGap(90, 90, 90))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCuadrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addGap(32, 32, 32))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnGuardar;
-    private javax.swing.JLabel jLabel1;
-    public javax.swing.JTextField txtCuadrito;
+    public javax.swing.JButton btnVerificar;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JTextField txtRazon;
+    public javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
