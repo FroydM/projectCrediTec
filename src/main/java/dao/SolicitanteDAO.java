@@ -94,12 +94,25 @@ public class SolicitanteDAO {
         final String NOMBRE_ARCHIVO = URL+ cedulaEncriptada+".dat";
         File objectDoc = new File(NOMBRE_ARCHIVO);
         objectDoc.delete();
+        
     }
     
     static public void actualizarSolicitanteById(Solicitante dataSolicitante) throws DAOException, IOException,ClassNotFoundException {
         eliminarSolicitanteById(dataSolicitante.getCedula());
         guardarSolicitante(dataSolicitante);
-       
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DAOException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    static ArrayList<Credito> obtenerAllCreditosBySolicitante(int id) throws DAOException, IOException,ClassNotFoundException{
+        Solicitante currentSolicitante = obtenerSolicitanteById(id);
+        return currentSolicitante.creditosSolicitados;
     }
     
     /**
@@ -133,4 +146,5 @@ public class SolicitanteDAO {
             return null;
         }
     }
+    
 }

@@ -7,6 +7,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.CreditoFiduciario;
+import model.Moneda;
+import model.TipoTasa;
 import system.DataValuesException;
 import view.CreditoFiduciarioView;
 import view.CreditoPersonalView;
@@ -14,7 +17,8 @@ import view.CreditoPrendarioView;
 import view.CreditoView;
 import view.CreditoViviendaView;
 import view.SolicitanteView;
-
+import dao.SolicitanteDAO;
+import model.Solicitante;
 /**
  *
  * @author Melanie and Froyd
@@ -94,12 +98,12 @@ public class CreditoController implements ActionListener{
                 //JOptionPane.showMessageDialog(null, "Has tomado pacha con Jet?", "Abriendo",JOptionPane.QUESTION_MESSAGE);
                 break;
             case "Personal":
-                allCampos();
+                clearAllCampos();
                 removeTab();
                 this.view.pnMainPanel.addTab("Datos personal", viewPersonal);
                 break;
             case "Terreno":
-                allCampos();
+                clearAllCampos();
                 removeTab();
                 break;
             
@@ -205,7 +209,7 @@ public class CreditoController implements ActionListener{
         this.viewFiduciario.txtSalarioBruto.setText("");
         this.viewFiduciario.txtSalarioLiquido.setText("");
     }
-    private void allCampos() {
+    private void clearAllCampos() {
         limpiarCamposCredito();
         limpiarCamposPersonal();
         limpiarCamposPrendario();
@@ -213,7 +217,28 @@ public class CreditoController implements ActionListener{
         limpiarCamposFiduciario();
     }
     private void guardarCredito(){
-        allCampos();
+        String item = String.valueOf(this.view.cbTipoCredito.getSelectedItem());
+        switch (item) {
+            case "Fiduciario" -> {
+                //Solicitante sol = SolicitanteDAO.obtenerSolicitanteById(this.view.txtCedulaSolicitante.getText());
+                //sol.agregarCreditoFiduciario(0, 0, 0, Moneda.COLONES, 0, TipoTasa.TASA_FILA, fiadores);
+                //SolicitanteDAO.actualizarSolicitanteById(sol);
+            }
+            case "Prendario" -> {
+                
+            }
+            case "Vivienda" -> {
+                
+            }
+            case "Personal" -> {
+                
+            }
+            case "Terreno" -> {
+                
+            }
+            
+            default -> throw new AssertionError();
+        }
     }
     private void removeTab(){
         if(this.view.pnMainPanel.getTabCount()>1){

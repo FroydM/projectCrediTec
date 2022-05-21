@@ -34,18 +34,19 @@ public class ProjectCrediTec {
 
     public static void main(String[] args) throws Exception {
             
-           //MainView vw = new MainView();
-           //MainController sC = new MainController(vw);
-           //vw.setVisible(true);
+           MainView vw = new MainView();
+           MainController sC = new MainController(vw);
+           vw.setVisible(true);
+           PdfApi newPDf = new PdfApi("prueba.pdf");
         try {
            // Solicitante newSolicitante = new Solicitante(123, "Froyd", "Marchena", "Loria", 750000, 700000, 84934434, "marchena.froyd@gmail.com", "Cartago", "Paraiso", "Paraiso", "En una casa");
             //SolicitanteDAO.guardarSolicitante(newSolicitante);
             //System.out.println(newSolicitante.creditosSolicitados.size());
-            Solicitante getSolicitante = SolicitanteDAO.obtenerSolicitanteById(123);
+            //Solicitante getSolicitante = SolicitanteDAO.obtenerSolicitanteById(123);
             //getSolicitante.agregarCreditoHipotecarioTerreno(300000, 36, 6, Moneda.DOLARES, TipoTasa.TASA_INDEXADA);
             //SolicitanteDAO.actualizarSolicitanteById(getSolicitante);
-            getSolicitante = SolicitanteDAO.obtenerSolicitanteById(123);
-            System.out.println(getSolicitante.creditosSolicitados.size());
+            //getSolicitante = SolicitanteDAO.obtenerSolicitanteById(123);
+            //System.out.println(getSolicitante.creditosSolicitados.size());
         } catch (Exception e) {
                 System.out.println(e.getMessage());
         }
