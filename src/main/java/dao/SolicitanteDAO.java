@@ -94,7 +94,6 @@ public class SolicitanteDAO {
         final String NOMBRE_ARCHIVO = URL+ cedulaEncriptada+".dat";
         File objectDoc = new File(NOMBRE_ARCHIVO);
         objectDoc.delete();
-        
     }
     
     static public void actualizarSolicitanteById(Solicitante dataSolicitante) throws DAOException, IOException,ClassNotFoundException {

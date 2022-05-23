@@ -18,8 +18,8 @@ public class CreditoHipotecarioTerreno extends Credito {
     public CreditoHipotecarioTerreno() {
     }
 
-    public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda,tipoTasa);
+    public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_INDEXADA);
         
     }
     

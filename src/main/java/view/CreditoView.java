@@ -187,7 +187,7 @@ public class CreditoView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cbTipoCredito;
-    private javax.swing.JComboBox<String> cbxMoneda;
+    public javax.swing.JComboBox<String> cbxMoneda;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

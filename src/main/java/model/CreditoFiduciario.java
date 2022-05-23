@@ -15,10 +15,17 @@ public class CreditoFiduciario extends Credito {
     
     private ArrayList<Fiador> fiadores;
   
-    public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, tipoTasa);
+    public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FILA);
         
        fiadores= new ArrayList<>();
+
+    }
+    public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,ArrayList<Fiador> fiadores){
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FILA);
+        
+        
+       this.fiadores= fiadores;
 
     }
     @Override

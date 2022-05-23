@@ -16,8 +16,8 @@ public class CreditoPrendario extends Credito {
     private double valorPrenda;
    
 
-    public CreditoPrendario(String prenda, double valorPrenda, double pMonto,double pInteresAnual , int pPlazoMeses, Moneda pMoneda,TipoTasa tipoTaza) {
-        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda,tipoTaza);
+    public CreditoPrendario(String prenda, double valorPrenda, double pMonto,double pInteresAnual , int pPlazoMeses, Moneda pMoneda) {
+        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda,TipoTasa.TASA_FILA);
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
 

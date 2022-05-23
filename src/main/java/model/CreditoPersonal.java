@@ -16,8 +16,8 @@ public class CreditoPersonal extends Credito {
     
     
     
-    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,tipoTasa);
+    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,double salario){
+        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_FILA);
         this.razonCredito = pRazonCredito;
     }
     

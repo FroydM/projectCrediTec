@@ -4,6 +4,13 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Fiador;
+import system.DataValuesException;
+
 /**
  *
  * @author march
@@ -13,8 +20,52 @@ public class CreditoFiduciarioView extends javax.swing.JPanel {
     /**
      * Creates new form CreditoFiduciario
      */
+    public ArrayList<Fiador> fiadores;
     public CreditoFiduciarioView() {
         initComponents();
+        fiadores = new ArrayList<>();
+    }
+    
+    private void agregarFiador(){
+        try {
+            validarCampos();
+            String nombre = txtNombre.getText();
+            String apellido1 = txt1Apellido.getText();
+            String apellido2 = txt2Apellido.getText();
+            int cedula = Integer.parseInt(txtCedula.getText());
+            double salarioLiquido = Double.parseDouble(txtSalarioLiquido.getText());
+            double salarioBruto = Double.parseDouble(txtSalarioBruto.getText());
+            Fiador newFiador = new Fiador(cedula, nombre, apellido1, apellido2, salarioBruto, salarioLiquido);
+            fiadores.add(newFiador);
+            mostrarDatos();
+        } catch (NumberFormatException | DataValuesException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    private void mostrarDatos(){
+        DefaultListModel modelo = new DefaultListModel();
+        
+        for(Fiador current : fiadores) {
+            Object row = current.getCedula() +"-"+current.getNombre()+" " + current.getPriApellido();
+            modelo.addElement(row);
+        }
+        
+        this.listaFiador.setModel(modelo);
+    }
+    
+    private void validarCampos()throws DataValuesException {
+        if(txtNombre.getText().replace(" ", "").equals("") || txt1Apellido.getText().replace(" ", "").equals("") 
+                || txt2Apellido.getText().replace(" ", "").equals("") || txtCedula.getText().replace(" ", "").equals("") 
+                || txtSalarioBruto.getText().replace(" ", "").equals("") || txtSalarioLiquido.getText().replace(" ", "").equals("")) {
+            throw new DataValuesException("Campos vacios");
+        }
+        try {
+            double salarioLiquido = Double.parseDouble(txtSalarioLiquido.getText());
+            double salarioBruto = Double.parseDouble(txtSalarioBruto.getText());
+        } catch (NumberFormatException e) {
+            throw new DataValuesException("Caracteres no validos");
+        }
     }
 
     /**
@@ -82,7 +133,12 @@ public class CreditoFiduciarioView extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
         jPanel1.add(txtSalarioLiquido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 240, -1));
 
-        jButton1.setText("Verificar");
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 382, 100, 30));
 
         spListaFiador.setViewportView(listaFiador);
@@ -114,6 +170,10 @@ public class CreditoFiduciarioView extends javax.swing.JPanel {
     private void txtSalarioBrutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioBrutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioBrutoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        agregarFiador();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
