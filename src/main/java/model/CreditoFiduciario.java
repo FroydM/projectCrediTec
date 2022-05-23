@@ -16,13 +16,15 @@ public class CreditoFiduciario extends Credito {
     private ArrayList<Fiador> fiadores;
   
     public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
-        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FILA);
+
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FIJA);
+
         
        fiadores= new ArrayList<>();
 
     }
     public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,ArrayList<Fiador> fiadores){
-        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FILA);
+        super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FIJA);
         
         
        this.fiadores= fiadores;
@@ -74,12 +76,12 @@ public class CreditoFiduciario extends Credito {
         return true;
     }
     
-    public void mostrarAmortizacion(){
+    @Override
+    public ArrayList<double[]> mostrarAmortizacion(){
         
         ArrayList<double[]> info =  amortizacionFrancesa();
+        return info;
         
-        for (int i=0; i<info.size(); i++){
-           System.out.println(Arrays.toString(info.get(i)));
-        }
+        
     }
 }

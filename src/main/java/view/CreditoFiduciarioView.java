@@ -7,7 +7,6 @@ package view;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Fiador;
 import system.DataValuesException;
 

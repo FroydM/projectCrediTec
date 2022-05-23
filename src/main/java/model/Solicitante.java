@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +35,7 @@ public class Solicitante extends Persona{
     }
 
     public void agregarCreditoPersonal(double monto,int plazo,double interezAnual,Moneda moneda,String razonCredito) {
+
         CreditoPersonal newCredito = new CreditoPersonal(razonCredito,monto, plazo, interezAnual, moneda,this.getSalarioLiquido());
        
         creditosSolicitados.add(newCredito);
@@ -41,12 +43,14 @@ public class Solicitante extends Persona{
     }
     
     public void agregarCreditoPrendario(double monto,int plazo,double interezAnual,Moneda moneda, double taza,String prenda,double valorPrenda) {
+
         CreditoPrendario newCredito = new CreditoPrendario(prenda,valorPrenda,monto, interezAnual, plazo, moneda);
         if(newCredito.verificarPrenda()) {
             creditosSolicitados.add(newCredito);
         }
     }
     
+
     public void agregarCreditoFiduciario(double monto,int plazo,double interezAnual,Moneda moneda, double taza,ArrayList<Fiador> fiadores){
         CreditoFiduciario newCredito = new CreditoFiduciario(monto, plazo, interezAnual, moneda);
         for(Fiador fiador : fiadores) {
@@ -62,6 +66,7 @@ public class Solicitante extends Persona{
         creditosSolicitados.add(newCredito);
     }
     
+
     public void agregarCreditoHipotecarioVivienda(double monto,int plazo,double interezAnual,Moneda moneda, double taza,double ingresoFamiliar,char bono){
         CreditoHipotecarioVivienda newCredito = new CreditoHipotecarioVivienda(ingresoFamiliar, bono, monto, plazo, interezAnual, moneda);
         creditosSolicitados.add(newCredito);
@@ -103,6 +108,10 @@ public class Solicitante extends Persona{
         msg += "Residencia: " + getDireccion() + "\n";
         return msg;
     }
+/*
+    public void agregarCreditoPersonal(double monto, int plazo, double interes, Moneda moneda) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }*/
     
     
     

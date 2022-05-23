@@ -17,7 +17,8 @@ public class CreditoPrendario extends Credito {
    
 
     public CreditoPrendario(String prenda, double valorPrenda, double pMonto,double pInteresAnual , int pPlazoMeses, Moneda pMoneda) {
-        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda,TipoTasa.TASA_FILA);
+        super(TipoCredito.PRENDARIO, pMonto, pPlazoMeses,pInteresAnual, pMoneda,TipoTasa.TASA_FIJA);
+
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
 
@@ -41,13 +42,12 @@ public class CreditoPrendario extends Credito {
         return montoFinal;
     }   
     
-    public void mostrarAmortizacion(){
+    @Override
+    public ArrayList<double[]> mostrarAmortizacion(){
         
          ArrayList<double[]> info =  amortizacionAmericana();
-        
-        for (int i=0; i<info.size(); i++){
-           System.out.println(Arrays.toString(info.get(i)));
-        }
+       
+        return info;
     }
        
     public double getValorPrenda() {

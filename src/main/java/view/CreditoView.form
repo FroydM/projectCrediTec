@@ -32,7 +32,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnMainPanel" pref="394" max="32767" attributes="0"/>
+              <Component id="pnMainPanel" pref="428" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -132,15 +132,12 @@
             <Component class="javax.swing.JComboBox" name="cbTipoCredito">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="5">
                     <StringItem index="0" value="Fiduciario"/>
                     <StringItem index="1" value="Personal"/>
                     <StringItem index="2" value="Prendario"/>
                     <StringItem index="3" value="Terreno"/>
                     <StringItem index="4" value="Vivienda"/>
-                    <StringItem index="5" value=" "/>
-                    <StringItem index="6" value=" "/>
-                    <StringItem index="7" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -160,7 +157,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="38" y="94" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="40" y="150" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -170,7 +167,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="107" y="91" width="206" height="-1"/>
+                  <AbsoluteConstraints x="110" y="150" width="206" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -180,7 +177,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="38" y="149" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="40" y="210" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -193,7 +190,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="107" y="146" width="206" height="-1"/>
+                  <AbsoluteConstraints x="110" y="210" width="206" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -203,7 +200,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="39" y="203" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="40" y="270" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -213,17 +210,20 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="40" y="260" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="40" y="90" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtInteres">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="107" y="200" width="206" height="-1"/>
+                  <AbsoluteConstraints x="110" y="270" width="206" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -232,7 +232,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
                     <StringItem index="0" value="Colones"/>
-                    <StringItem index="1" value="D&#xf3;lares"/>
+                    <StringItem index="1" value="Dolares"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -242,7 +242,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="107" y="257" width="206" height="-1"/>
+                  <AbsoluteConstraints x="110" y="90" width="206" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -267,6 +267,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCedulaSolicitante">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>

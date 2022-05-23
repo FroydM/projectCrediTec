@@ -26,26 +26,32 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Creditos"/>
+            <Property name="text" type="java.lang.String" value="Cr&#xe9;ditos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="btnGestionCreditoPersonal">
+            <MenuItem class="javax.swing.JMenuItem" name="btnSolicitudCredito">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestion Credito Personal"/>
+                <Property name="text" type="java.lang.String" value="Solicitud"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar amortizaci&#xf3;n de credito"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="btnInfoCredito">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar creditos"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="tabla">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="tabla"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>

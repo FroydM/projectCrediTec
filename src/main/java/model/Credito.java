@@ -2,11 +2,8 @@
 package model;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -53,7 +50,7 @@ abstract public class Credito implements Serializable{
         this.tipo = pTipo;
         this.monto = pMonto;
         this.plazo = pPlazoMeses;
-        this.interesAnual = pInteresAnual;
+        this.interesAnual = pInteresAnual/100;
         this.moneda = pMoneda;
         this.fechaSolicitud = LocalDate.now();
         this.tipoTasa = tasa;
@@ -61,6 +58,7 @@ abstract public class Credito implements Serializable{
         auxid+=1;
     }
     
+    abstract public ArrayList<double[]> mostrarAmortizacion();
     
     abstract public double calculoMontoFinal();
     
@@ -201,6 +199,7 @@ abstract public class Credito implements Serializable{
         
         double deuda= calculoMontoFinal();
         double montoAmortizacion= calculoAmortizacionAleman();
+        System.out.println("cuota amortizació: "+Math.round(montoAmortizacion) );
         double montoCuota=0;
         int numeroCuota=1;
         
@@ -276,6 +275,7 @@ abstract public class Credito implements Serializable{
      *@return el monto de la amortización 
      */
     public double calculoAmortizacionAleman(){
+        double monto = calculoMontoFinal();
         double cuotaFija = monto/plazo;
      
         return Math.round(cuotaFija);
@@ -285,6 +285,7 @@ abstract public class Credito implements Serializable{
      *@return el monto de la cuota de interes 
      */
     public double calculoInteresAleman(int pNumeroCuota){
+        double monto = calculoMontoFinal();
         double cuotaInteres = (plazo-pNumeroCuota+1)*((monto*interesAnual)/plazo);
         
         return Math.round(cuotaInteres);
@@ -294,12 +295,14 @@ abstract public class Credito implements Serializable{
      *@return el monto de la cuota 
      */
     public double calculoCuotaAlemana(int pNumeroCuota){
+        double monto=calculoMontoFinal();
         double cuotaTotal=0;
         double cuotaAnterior;
         
         if(pNumeroCuota< plazo && pNumeroCuota==1 ){
             
-           cuotaTotal = (monto/plazo)+interesAnual*monto;
+           cuotaTotal = (monto/plazo)+(interesAnual*monto);
+            System.out.println("interes:" +interesAnual);
            
            return cuotaTotal;
               
@@ -318,11 +321,7 @@ abstract public class Credito implements Serializable{
         
         return cuotaTotal;
     }
-    
-    
-    
-    
-    
+
     /**
      * Metodos accesores
      * @return 
@@ -353,6 +352,62 @@ abstract public class Credito implements Serializable{
 
     public void setTipoTasa(TipoTasa tipoTasa) {
         this.tipoTasa = tipoTasa;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public double getMontoFinal() {
+        return montoFinal;
+    }
+
+    public int getPlazo() {
+        return plazo;
+    }
+
+    public Moneda getMoneda() {
+        return moneda;
+    }
+
+    public double getIngresoFamiliar() {
+        return ingresoFamiliar;
+    }
+
+    public LocalDate getFechaSolicitud() {
+        return fechaSolicitud;
+    }
+
+    public double getFormalizacion() {
+        return formalizacion;
+    }
+
+    public double getHonorario() {
+        return honorario;
+    }
+
+    public double getInteresAnual() {
+        return interesAnual;
+    }
+
+    public double getPorcentajeInteres() {
+        return porcentajeInteres;
+    }
+
+    public double getPorcentajeEvaluo() {
+        return porcentajeEvaluo;
+    }
+
+    public double getHonorarioMinimo() {
+        return honorarioMinimo;
+    }
+
+    public static int getAuxid() {
+        return auxid;
     }
     
    

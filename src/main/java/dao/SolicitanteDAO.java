@@ -109,7 +109,7 @@ public class SolicitanteDAO {
      * @throws IOException
      * @throws ClassNotFoundException 
      */
-    static ArrayList<Credito> obtenerAllCreditosBySolicitante(int id) throws DAOException, IOException,ClassNotFoundException{
+    static public  ArrayList<Credito> obtenerAllCreditosBySolicitante(int id) throws DAOException, IOException,ClassNotFoundException{
         Solicitante currentSolicitante = obtenerSolicitanteById(id);
         return currentSolicitante.creditosSolicitados;
     }
@@ -119,7 +119,7 @@ public class SolicitanteDAO {
      * @param docId Numero de cedula encriptado que se verifica
      * @return Valor boolean si existe el numero de cedula
      */
-    static protected boolean existeSolicitiante(String docId){
+    static public boolean existeSolicitiante(String docId){
         
         return Arrays.binarySearch(DIRECTORIO.list(),docId)>=0;
     }
