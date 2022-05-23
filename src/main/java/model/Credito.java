@@ -114,9 +114,12 @@ abstract public class Credito implements Serializable{
              calculoHonorario+= (16500000-11000000)*0.015;  
         }  
         
-        if (monto >16500000|| monto >= 33000000){
+        if (monto >16500000 && monto <= 33000000){
             calculoHonorario+= (monto-16500000)*0.0125;
            
+        }
+        if(monto>33000000) {
+            calculoHonorario += (33000000-16500000)*0.0125;
         }
         if(monto > 33000000){
             calculoHonorario+= (monto-33000000)*0.01;
@@ -183,7 +186,7 @@ abstract public class Credito implements Serializable{
             
             amortizacionList.add(amortizacionFrancesa);
             
-            deuda-=montoCuota;
+            deuda-=calculoAmortizacionHipotecaria(numeroCuota);
             numeroCuota+=1; 
         }
         return amortizacionList;
@@ -226,7 +229,7 @@ abstract public class Credito implements Serializable{
         double montoPrestamo=calculoMontoFinal();
         double cuotaFija;
         double calculo=(1+interesAnual);
-        
+        System.out.println(interesAnual);
         double calculo2= Math.pow(calculo, (-plazo));
 
         cuotaFija=(montoPrestamo*interesAnual)/(1-(calculo2));

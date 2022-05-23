@@ -299,6 +299,7 @@ public class CreditoController implements ActionListener{
                     double ingresoFamiliar = Double.parseDouble(this.viewVivienda.txtIngresoFamiliar.getText());
                     char bono='N';
                     if(this.viewVivienda.rbSi.isSelected())bono = 'S';
+                    System.out.println("Relacion de ono:" + bono);
                     currentSolicitante.agregarCreditoHipotecarioVivienda(monto, plazo, interes, moneda, monto,ingresoFamiliar, bono);
                 
                 }

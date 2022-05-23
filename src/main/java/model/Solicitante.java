@@ -37,7 +37,7 @@ public class Solicitante extends Persona{
     public void agregarCreditoPersonal(double monto,int plazo,double interezAnual,Moneda moneda,String razonCredito) {
 
         CreditoPersonal newCredito = new CreditoPersonal(razonCredito,monto, plazo, interezAnual, moneda,this.getSalarioLiquido());
-       
+        newCredito.setId(creditosSolicitados.size()+"-"+this.getCedula());
         creditosSolicitados.add(newCredito);
         
     }
@@ -45,9 +45,10 @@ public class Solicitante extends Persona{
     public void agregarCreditoPrendario(double monto,int plazo,double interezAnual,Moneda moneda, double taza,String prenda,double valorPrenda) {
 
         CreditoPrendario newCredito = new CreditoPrendario(prenda,valorPrenda,monto, interezAnual, plazo, moneda);
-        if(newCredito.verificarPrenda()) {
-            creditosSolicitados.add(newCredito);
-        }
+        newCredito.setId(creditosSolicitados.size()+"-"+this.getCedula());
+       
+        creditosSolicitados.add(newCredito);
+        
     }
     
 
@@ -56,19 +57,21 @@ public class Solicitante extends Persona{
         for(Fiador fiador : fiadores) {
             newCredito.agregarFiador(fiador.getCedula(), fiador.getNombre(), fiador.getPriApellido(), fiador.getSegApellido(), fiador.getSalarioBrutoMensual(), fiador.getSalarioLiquido());
         }
-        
+        newCredito.setId(creditosSolicitados.size()+"-"+this.getCedula());
         creditosSolicitados.add(newCredito);
         
     }
     
     public void agregarCreditoHipotecarioTerreno(double monto,int plazo,double interezAnual,Moneda moneda) {
         CreditoHipotecarioTerreno newCredito = new CreditoHipotecarioTerreno(monto, plazo, interezAnual, moneda);
+        newCredito.setId(creditosSolicitados.size()+"-"+this.getCedula());
         creditosSolicitados.add(newCredito);
     }
     
 
     public void agregarCreditoHipotecarioVivienda(double monto,int plazo,double interezAnual,Moneda moneda, double taza,double ingresoFamiliar,char bono){
         CreditoHipotecarioVivienda newCredito = new CreditoHipotecarioVivienda(ingresoFamiliar, bono, monto, plazo, interezAnual, moneda);
+        newCredito.setId(creditosSolicitados.size()+"-"+this.getCedula());
         creditosSolicitados.add(newCredito);
     }
     

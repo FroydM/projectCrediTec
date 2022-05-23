@@ -40,7 +40,7 @@ public class CreditoHipotecarioVivienda extends Credito {
     @Override
     public double costoFormalizacion(){
 
-        super.formalizacion = super.monto*0.0075;
+        super.formalizacion = (monto-bono)*0.0075;
   
         return formalizacion;
     } 
@@ -53,21 +53,22 @@ public class CreditoHipotecarioVivienda extends Credito {
     public double calculoMontoFinal(){
         
         if (vivienda == 'S'){
-            
-            double bono = calcularBonoVivienda(); 
-            
-            monto-= bono;
 
-            montoFinal= monto+costoAvaluo()+costoFormalizacion()+costoHonorarios();
-            
+            montoFinal= (monto-bono)+costoAvaluo()+costoFormalizacion()+costoHonorarios();
+            System.out.println("Costo avaluo"+costoAvaluo());
+            System.out.println("Costo formalizacion: " +costoFormalizacion());
+            System.out.println("horonario: " + costoHonorarios());
             return montoFinal;
         }else{
-            
             montoFinal= monto+costoAvaluo()+costoFormalizacion()+costoHonorarios();
             
             return montoFinal;
         }
             
+    }
+    @Override
+    public double costoAvaluo(){
+        return ((monto-bono)*0.0065);
     }
 
     public double calcularBonoVivienda(){
@@ -76,35 +77,34 @@ public class CreditoHipotecarioVivienda extends Credito {
                 
         if (ingresoFamiliar <= 282753){
             bono= 7630000;
-        }
-        if (ingresoFamiliar>282753.5 || ingresoFamiliar<= 424129.5){
+        }else if (ingresoFamiliar>282753.5 && ingresoFamiliar<= 424129.5){
             bono= 7576000;
         }
-        if(ingresoFamiliar>424129.5|| ingresoFamiliar<= 565506){
+        else if(ingresoFamiliar>424129.5 && ingresoFamiliar<= 565506){
             bono=7523000;
         }
-        if(ingresoFamiliar>565506 || ingresoFamiliar<= 706882.5){
+        else if(ingresoFamiliar>565506 && ingresoFamiliar<= 706882.5){
             bono=7178000;
         }
-        if(ingresoFamiliar>706882.5 || ingresoFamiliar<= 848259){
+        else if(ingresoFamiliar>706882.5 && ingresoFamiliar<= 848259){
             bono=6834000;
         }
-        if(ingresoFamiliar>848259 || ingresoFamiliar<= 989635.5){
+        else if(ingresoFamiliar>848259 && ingresoFamiliar<= 989635.5){
             bono=6489000;
         }
-        if(ingresoFamiliar>989635.5 || ingresoFamiliar<= 1131012){
+        else if(ingresoFamiliar>989635.5 && ingresoFamiliar<= 1131012){
             bono=6145000;
         }
-        if(ingresoFamiliar>1131012 || ingresoFamiliar<= 1272388.5){
+        else if(ingresoFamiliar>1131012 && ingresoFamiliar<= 1272388.5){
             bono=5801000;
         }
-        if(ingresoFamiliar>1272388.5 || ingresoFamiliar<= 1413765){
+        else if(ingresoFamiliar>1272388.5 && ingresoFamiliar<= 1413765){
             bono=5456000;
         }
-        if(ingresoFamiliar>1413765 || ingresoFamiliar<= 155141.5){
+        else if(ingresoFamiliar>1413765 && ingresoFamiliar<= 155141.5){
             bono=5112000;
         }
-        if(ingresoFamiliar>155141.5 || ingresoFamiliar<= 1696518){
+        else if(ingresoFamiliar>155141.5 && ingresoFamiliar<= 1696518){
             bono=4768000;
         }
        
@@ -113,7 +113,8 @@ public class CreditoHipotecarioVivienda extends Credito {
 
     @Override
     public ArrayList<double[]> mostrarAmortizacion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<double[]> info =  amortizacionFrancesa();
+        return info;
     }
     @Override
     public String toString(){

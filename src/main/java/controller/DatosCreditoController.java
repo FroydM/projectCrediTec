@@ -112,21 +112,21 @@ public class DatosCreditoController implements ActionListener{
         int cedula= Integer.valueOf(view.txtCedula.getText());
         
         String creditoElegido =view.listaCreditos.getSelectedValue();
-        String[] buscarId = creditoElegido.split("-",2);
-        String idCredito = buscarId[0];
+        String[] buscarId = creditoElegido.split("-");
+        String idCredito = buscarId[0]+"-"+buscarId[1];
                 
         ArrayList<Credito> listado = SolicitanteDAO.obtenerAllCreditosBySolicitante(cedula);
         DefaultTableModel modelo = (DefaultTableModel)view.jtAmortizacion.getModel();
         
         modelo.setRowCount(0);
+        
         for(Credito item : listado) {
+            System.out.println(idCredito);
             try{
                 if (item.getId().equals(idCredito)){
-                    if (item.getEstado() == Estado.PREAPROBADO) {
-                        this.view.txtEstado.setText("PREAPROBADO");
-                    }else {
-                        this.view.txtEstado.setText("Rechazado");
-                    }
+                    System.out.println("Hola");
+                    this.view.txtEstado.setText(item.getEstado().toString());
+                   
                     ArrayList<double[]> info = item.mostrarAmortizacion();
                     currentCredito = item;
                     for (int i=0; i<info.size(); i++){

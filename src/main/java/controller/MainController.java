@@ -70,6 +70,8 @@ public class MainController implements ActionListener{
             } catch (DAOException | ClassNotFoundException | IOException  ex) {
                
                 JOptionPane.showMessageDialog(null,"Solicitante no registrado:");
+            } catch(NumberFormatException em) {
+                
             }
             
         }
