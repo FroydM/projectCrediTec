@@ -34,6 +34,8 @@ public class DatosCreditosView extends javax.swing.JPanel {
         jtAmortizacion = new javax.swing.JTable();
         txtCedula = new javax.swing.JTextField();
         btnMostrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,6 +99,10 @@ public class DatosCreditosView extends javax.swing.JPanel {
         btnMostrar.setText("Calcular Amortización");
         jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, 40));
 
+        jLabel1.setText("Estado:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 270, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,6 +131,7 @@ public class DatosCreditosView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnMostrar;
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -132,5 +139,6 @@ public class DatosCreditosView extends javax.swing.JPanel {
     public javax.swing.JTable jtAmortizacion;
     public javax.swing.JList<String> listaCreditos;
     public javax.swing.JTextField txtCedula;
+    public javax.swing.JTextField txtEstado;
     // End of variables declaration//GEN-END:variables
 }

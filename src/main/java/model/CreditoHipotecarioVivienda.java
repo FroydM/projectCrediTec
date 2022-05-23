@@ -30,7 +30,6 @@ public class CreditoHipotecarioVivienda extends Credito {
      */
     public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
         super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda ,TipoTasa.TASA_INDEXADA);
-        
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;
     }

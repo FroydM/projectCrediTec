@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Credito;
+import model.Estado;
 import model.Solicitante;
 import static org.bouncycastle.asn1.x500.style.RFC4519Style.l;
 import system.DAOException;
@@ -81,7 +82,11 @@ public class DatosCreditoController implements ActionListener{
         for(Credito item : listado) {
             try{
                 if (item.getId().equals(idCredito)){
-
+                    if (item.getEstado() == Estado.PREAPROBADO) {
+                        this.view.txtEstado.setText("PREAPROBADO");
+                    }else {
+                        this.view.txtEstado.setText("Rechazado");
+                    }
                     ArrayList<double[]> info = item.mostrarAmortizacion();
 
                     for (int i=0; i<info.size(); i++){

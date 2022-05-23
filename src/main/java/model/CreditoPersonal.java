@@ -14,9 +14,7 @@ import java.util.Arrays;
 public class CreditoPersonal extends Credito {
     private String razonCredito;
     
-    
-    
-    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,double salario){
         super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_FIJA);
         this.razonCredito = pRazonCredito;
     }

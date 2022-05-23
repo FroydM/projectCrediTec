@@ -80,12 +80,12 @@ public class ProjectCrediTec {
         
         */
    
-        Solicitante newSolicitante3 = new Solicitante(3, "Prueba", "q", "q", 20000000, 18000000, 84934434, "p@gmail.com", "Cartago", "Paraiso", "Paraiso", "En una casa");
+        /**Solicitante newSolicitante3 = new Solicitante(3, "Prueba", "q", "q", 20000000, 18000000, 84934434, "p@gmail.com", "Cartago", "Paraiso", "Paraiso", "En una casa");
         //SolicitanteDAO.guardarSolicitante(newSolicitante3);
         Solicitante getSolicitante3 = SolicitanteDAO.obtenerSolicitanteById(3);
         getSolicitante3.agregarCreditoPersonal(3000000, 5, 16, COLONES, "PAGO EXTRAORDINARIO CASA");//no califica
         getSolicitante3.agregarCreditoPersonal(10000, 10, 16, Moneda.DOLARES,"COMPRA CARRO"); 
-        SolicitanteDAO.actualizarSolicitanteById(getSolicitante3);
+        SolicitanteDAO.actualizarSolicitanteById(getSolicitante3);*/
         
     }
 

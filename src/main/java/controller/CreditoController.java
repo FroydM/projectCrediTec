@@ -16,12 +16,15 @@ import view.CreditoPrendarioView;
 import view.CreditoView;
 import view.CreditoViviendaView;
 import view.SolicitanteView;
+import model.Solicitante;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Moneda;
-import model.Solicitante;
 import services.TasaBasicaPasiva;
 import services.TasaEfectivaDolares;
+import dao.SolicitanteDAO;
+import java.io.IOException;
+
 import system.DAOException;
 /**
  *
@@ -33,14 +36,14 @@ public class CreditoController implements ActionListener{
     CreditoViviendaView viewVivienda;
     CreditoPrendarioView viewPrendario;
     CreditoPersonalView viewPersonal;
-    SolicitanteView viewSolicitante;
+    //SolicitanteView viewSolicitante;
     
     public CreditoController(CreditoView view) {
         this.view = view;
         this.viewFiduciario = new CreditoFiduciarioView();
         this.viewPrendario = new CreditoPrendarioView();
         this.viewVivienda = new CreditoViviendaView();
-        this.viewSolicitante = new SolicitanteView();
+       // this.viewSolicitante = new SolicitanteView();
         this.viewPersonal = new CreditoPersonalView();
         this.view.cbTipoCredito.addActionListener(this);
         this.view.btnGuardar.addActionListener(this);
@@ -90,6 +93,7 @@ public class CreditoController implements ActionListener{
                }
 
                verificarDatosCredito();
+               guardarCredito();
             } catch (DataValuesException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
@@ -117,7 +121,7 @@ public class CreditoController implements ActionListener{
                 limpiarCamposFiduciario();
                 removeTab();
                 this.view.pnMainPanel.addTab("Datos vivienda",viewVivienda);
-                //JOptionPane.showMessageDialog(null, "Has tomado pacha con Jet?", "Abriendo",JOptionPane.QUESTION_MESSAGE);
+                
                 break;
             case "Personal":
                 clearAllCampos();
@@ -228,27 +232,7 @@ public class CreditoController implements ActionListener{
         
     }
     private void verificarDatosFiduciario() throws DataValuesException {
-        
-        String nombre = this.viewFiduciario.txtNombre.getText();
-        String apellido = this.viewFiduciario.txt1Apellido.getText();
-        String apellido2 = this.viewFiduciario.txt2Apellido.getText();
-        
-        if(nombre.replace(" ", "").equals("")) throw new DataValuesException("Nombre incorrecto");
-        if(apellido.replace(" ", "").equals("")) throw new DataValuesException("Primer apellido incorrecto");
-        if(nombre.replace(" ", "").equals("")) throw new DataValuesException("Segundo apellido incorrecto");
-        
-        try{
-            double cedula = Double.parseDouble(this.viewFiduciario.txtCedula.getText());
-        }catch (NumberFormatException e){
-            throw new DataValuesException("Ingrese una cédula válida");
-        }
-        
-        try{
-            double salarioBruto = Double.parseDouble(this.viewFiduciario.txtSalarioBruto.getText());
-            double salarioLiquido = Double.parseDouble(this.viewFiduciario.txtSalarioLiquido.getText());
-        }catch (NumberFormatException e){
-            throw new DataValuesException("Ingrese un monto válido");
-        }
+        if(this.viewFiduciario.fiadores.isEmpty()) throw new DataValuesException("No se encuentra fiadores registrados");
     
     }
     /**
@@ -278,6 +262,8 @@ public class CreditoController implements ActionListener{
         this.viewFiduciario.txt2Apellido.setText("");
         this.viewFiduciario.txtSalarioBruto.setText("");
         this.viewFiduciario.txtSalarioLiquido.setText("");
+        this.viewFiduciario.fiadores.clear();
+        this.viewFiduciario.listaFiador.removeAll();
     }
     private void clearAllCampos() {
         limpiarCamposCredito();
@@ -287,47 +273,52 @@ public class CreditoController implements ActionListener{
         limpiarCamposFiduciario();
     }
     
-    /**
-     * Función para guardar un crédito
-     * @throws DAOException
-     * @throws IOException
-     * @throws ClassNotFoundException 
-     */
-    private void guardarCredito() throws DAOException, IOException, ClassNotFoundException{
-        
-        Solicitante sol = SolicitanteDAO.obtenerSolicitanteById(Integer.parseInt(this.view.txtCedulaSolicitante.getText()));
-        
-        String moneda = String.valueOf(this.view.cbxMoneda.getSelectedItem());
-        String razon = viewPersonal.txtRazon.getText();
-        double salarioLiquido = sol.getSalarioLiquido();
+
+    
+    private void guardarCredito(){
+        try {
+            String item = String.valueOf(this.view.cbTipoCredito.getSelectedItem());
         double monto = Double.parseDouble(this.view.txtMonto.getText());
-        double interes = Double.parseDouble(this.view.txtInteres.getText());
         int plazo = Integer.parseInt(this.view.txtPlazo.getText());
-        
-        
-        String item = String.valueOf(this.view.cbTipoCredito.getSelectedItem());
-        
-        switch (item) {
-            case "Fiduciario" -> {
-                //Solicitante sol = SolicitanteDAO.obtenerSolicitanteById(this.view.txtCedulaSolicitante.getText());
-                //sol.agregarCreditoFiduciario(0, 0, 0, Moneda.COLONES, 0, TipoTasa.TASA_FILA, fiadores);
-                //SolicitanteDAO.actualizarSolicitanteById(sol);
-            }
-            case "Prendario" -> {
+        double interes = Double.parseDouble(this.view.txtInteres.getText());
+        Moneda moneda=null;
+        if(this.view.cbxMoneda.getSelectedItem().toString().equals("Colones")) moneda = Moneda.COLONES;
+        if(this.view.cbxMoneda.getSelectedItem().toString().equals("Dolares")) moneda = Moneda.DOLARES;
+        Solicitante currentSolicitante = SolicitanteDAO.obtenerSolicitanteById(Integer.parseInt(this.view.txtCedulaSolicitante.getText()));
+            switch (item) {
+                case "Fiduciario" -> {
+                    currentSolicitante.agregarCreditoFiduciario(monto, plazo, interes, moneda, monto, this.viewFiduciario.fiadores);
+                    
+                }
+                case "Prendario" -> {
+                    String prenda = this.viewPrendario.txtPrenda.getText();
+                    double valorPrenda = Double.parseDouble(this.viewPrendario.txtValor.getText());
+                    currentSolicitante.agregarCreditoPrendario(monto, plazo, interes, moneda, monto, prenda, valorPrenda);
+                }
+                case "Vivienda" -> {
+                    double ingresoFamiliar = Double.parseDouble(this.viewVivienda.txtIngresoFamiliar.getText());
+                    char bono='N';
+                    if(this.viewVivienda.rbSi.isSelected())bono = 'S';
+                    currentSolicitante.agregarCreditoHipotecarioVivienda(monto, plazo, interes, moneda, monto,ingresoFamiliar, bono);
                 
-            }
-            case "Vivienda" -> {
-                
-            }
-            case "Personal" -> {
-                
-                sol.agregarCreditoPersonal(monto, plazo, interes, Moneda.valueOf(moneda),razon);     
-            }
-            case "Terreno" -> {
-                
-            }
+                }
+                case "Personal" -> {
+                    String razon = this.viewPersonal.txtRazon.getText();
+                    currentSolicitante.agregarCreditoPersonal(monto, plazo, interes, moneda, razon);
+                    
+                }
+                case "Terreno" -> {
+                    currentSolicitante.agregarCreditoHipotecarioTerreno(monto, plazo, interes, moneda);
+                    
+                    
+                }
+
             
-            default -> throw new AssertionError();
+                default -> throw new AssertionError();
+            }
+            SolicitanteDAO.actualizarSolicitanteById(currentSolicitante);
+            JOptionPane.showMessageDialog(null, "Credito registrado correctamente");
+        } catch (IOException | ClassNotFoundException | NumberFormatException | DAOException e) {
         }
     }
     private void removeTab(){

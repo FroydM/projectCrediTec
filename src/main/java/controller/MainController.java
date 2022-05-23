@@ -62,16 +62,13 @@ public class MainController implements ActionListener{
                this.view.mainPanel.addTab("Solicitud de Crédito", panelCredito);
                
                panelCredito.txtCedulaSolicitante.setText(Integer.toString(cedula));
-               panelCredito.txtCedulaSolicitante.setText(Integer.toString(cedula));
                panelCredito.txtNombre.setText(sd.getNombre());
                panelCredito.txtApellido1.setText(sd.getPriApellido());
                panelCredito.txtApellido2.setText(sd.getSegApellido());
 
   
             } catch (DAOException | ClassNotFoundException | IOException  ex) {
-              //esto da error
-                //Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-                
+               
                 JOptionPane.showMessageDialog(null,"Solicitante no registrado:");
             }
             
