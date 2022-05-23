@@ -13,23 +13,20 @@ import java.util.Arrays;
  */
 public class CreditoHipotecarioTerreno extends Credito {
 
-    private static TipoCredito tipo= TipoCredito.HIPOTECARIOTERRENO;
-
     public CreditoHipotecarioTerreno() {
     }
 
-    public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(tipo, pMonto, pPlazoMeses, pInteresAnual, pMoneda,tipoTasa);
+    public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+        super(TipoCredito.HIPOTECARIOTERRENO, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_INDEXADA);
         
     }
     
-    public void mostrarAmortizacion(){
+    @Override
+    public ArrayList<double[]> mostrarAmortizacion(){
         
-         ArrayList<double[]> info =  amortizacionFrancesa();
-        
-        for (int i=0; i<info.size(); i++){
-           System.out.println(Arrays.toString(info.get(i)));
-        }
+        ArrayList<double[]> info =  amortizacionFrancesa();
+        return info;
+   
     }
     
     /**

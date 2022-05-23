@@ -30,6 +30,10 @@ public class SolicitanteController implements ActionListener{
         listar(this.view.listaSolicitantes);
     }
     
+    public SolicitanteController(){
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.btnNuevo) {
@@ -41,6 +45,7 @@ public class SolicitanteController implements ActionListener{
      * Esta funcion se encarga de listar los solicitantes registrados en una lista especifica.
      * @param lista Es un objeto donde se visualizaran los datos en la interfaz
      */
+
     private void listar(JList lista){
         try {
             ArrayList<Solicitante> listado = SolicitanteDAO.obtenerListadoSolicitantes();

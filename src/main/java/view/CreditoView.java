@@ -85,38 +85,42 @@ public class CreditoView extends javax.swing.JPanel {
         jLabel1.setText("Tipo:");
         panelDatosGenerales.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 36, -1, -1));
 
-        cbTipoCredito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fiduciario", "Personal", "Prendario", "Terreno", "Vivienda", " ", " ", " " }));
+        cbTipoCredito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fiduciario", "Personal", "Prendario", "Terreno", "Vivienda" }));
         panelDatosGenerales.add(cbTipoCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 33, 206, -1));
 
         jLabel2.setText("Monto:");
-        panelDatosGenerales.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 94, -1, -1));
-        panelDatosGenerales.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 91, 206, -1));
+        panelDatosGenerales.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        panelDatosGenerales.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 206, -1));
 
         jLabel3.setText("Plazo:");
-        panelDatosGenerales.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 149, -1, -1));
+        panelDatosGenerales.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         txtPlazo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPlazoActionPerformed(evt);
             }
         });
-        panelDatosGenerales.add(txtPlazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 146, 206, -1));
+        panelDatosGenerales.add(txtPlazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 206, -1));
 
         jLabel4.setText("Interés:");
-        panelDatosGenerales.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 203, -1, -1));
+        panelDatosGenerales.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         jLabel5.setText("Moneda");
-        panelDatosGenerales.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
-        panelDatosGenerales.add(txtInteres, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 200, 206, -1));
+        panelDatosGenerales.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
-        cbxMoneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colones", "Dólares" }));
-        panelDatosGenerales.add(cbxMoneda, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 257, 206, -1));
+        txtInteres.setEditable(false);
+        panelDatosGenerales.add(txtInteres, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 206, -1));
+
+        cbxMoneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colones", "Dolares" }));
+        panelDatosGenerales.add(cbxMoneda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 206, -1));
 
         jLabel6.setText("Datos Solicitante");
         panelDatosGenerales.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
 
         jLabel7.setText("Cédula:");
         panelDatosGenerales.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+
+        txtCedulaSolicitante.setEditable(false);
         panelDatosGenerales.add(txtCedulaSolicitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 200, -1));
 
         jLabel8.setText("Nombre:");
@@ -166,7 +170,7 @@ public class CreditoView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addComponent(pnMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -187,7 +191,7 @@ public class CreditoView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cbTipoCredito;
-    private javax.swing.JComboBox<String> cbxMoneda;
+    public javax.swing.JComboBox<String> cbxMoneda;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

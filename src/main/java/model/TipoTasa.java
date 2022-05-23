@@ -9,5 +9,5 @@ package model;
  * @author march
  */
 public enum TipoTasa {
-    TASA_FILA,TASA_INDEXADA;
+    TASA_FIJA,TASA_INDEXADA;
 }

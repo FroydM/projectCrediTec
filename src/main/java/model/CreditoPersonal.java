@@ -16,8 +16,8 @@ public class CreditoPersonal extends Credito {
     
     
     
-    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,tipoTasa);
+    public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+        super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_FIJA);
         this.razonCredito = pRazonCredito;
     }
     
@@ -27,6 +27,7 @@ public class CreditoPersonal extends Credito {
         double primeraCuota= calculoCuotaAlemana(pNumeroCuota);
         double salarioMinimo = primeraCuota+(primeraCuota*0.1);
         
+        System.out.println("Salario:"+ salario+ "Salario minimo:"+salarioMinimo+ "cuota:" + primeraCuota);
         return salarioMinimo<=salario;
     }
     @Override
@@ -37,13 +38,12 @@ public class CreditoPersonal extends Credito {
         return montoFinal;
     }
     
-    public void mostrarAmortizacion(){
+    @Override
+    public ArrayList<double[]> mostrarAmortizacion(){
         
          ArrayList<double[]> info =   amortizacionAlemana();
-        
-        for (int i=0; i<info.size(); i++){
-           System.out.println(Arrays.toString(info.get(i)));
-        }
+
+        return info;
     }
 
     public String getRazonCredito() {

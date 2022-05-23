@@ -32,9 +32,9 @@ public class MainView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         btnGestionSolicitantes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        btnGestionCreditoPersonal = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        btnSolicitudCredito = new javax.swing.JMenuItem();
+        btnInfoCredito = new javax.swing.JMenuItem();
+        tabla = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,16 +48,16 @@ public class MainView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Creditos");
+        jMenu3.setText("Créditos");
 
-        btnGestionCreditoPersonal.setText("Gestion Credito Personal");
-        jMenu3.add(btnGestionCreditoPersonal);
+        btnSolicitudCredito.setText("Solicitud");
+        jMenu3.add(btnSolicitudCredito);
 
-        jMenuItem1.setText("Mostrar amortización de credito");
-        jMenu3.add(jMenuItem1);
+        btnInfoCredito.setText("Mostrar creditos");
+        jMenu3.add(btnInfoCredito);
 
-        jMenuItem2.setText("Mostrar creditos");
-        jMenu3.add(jMenuItem2);
+        tabla.setText("tabla");
+        jMenu3.add(tabla);
 
         jMenuBar1.add(jMenu3);
 
@@ -113,14 +113,14 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem btnGestionCreditoPersonal;
     public javax.swing.JMenuItem btnGestionSolicitantes;
+    public javax.swing.JMenuItem btnInfoCredito;
+    public javax.swing.JMenuItem btnSolicitudCredito;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JTabbedPane mainPanel;
+    public javax.swing.JMenuItem tabla;
     // End of variables declaration//GEN-END:variables
 }

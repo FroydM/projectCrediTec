@@ -28,8 +28,8 @@ public class CreditoHipotecarioVivienda extends Credito {
      * @param pMoneda
      * @throws Exception 
      */
-    public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,TipoTasa tipoTasa){
-        super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda ,tipoTasa);
+    public CreditoHipotecarioVivienda(double pIngresoFamiliar, char pVivienda, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
+        super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda ,TipoTasa.TASA_INDEXADA);
         
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;
@@ -108,5 +108,10 @@ public class CreditoHipotecarioVivienda extends Credito {
        
         return bono;
     } 
+
+    @Override
+    public ArrayList<double[]> mostrarAmortizacion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
