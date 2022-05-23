@@ -8,12 +8,14 @@ import dao.SolicitanteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -22,6 +24,8 @@ import model.Credito;
 import model.Estado;
 import model.Solicitante;
 import static org.bouncycastle.asn1.x500.style.RFC4519Style.l;
+import services.MailingApi;
+import services.PdfApi;
 import system.DAOException;
 import view.DatosCreditosView;
 
@@ -33,13 +37,15 @@ import view.DatosCreditosView;
 public class DatosCreditoController implements ActionListener{
     
      private DatosCreditosView view;
-    
+     private Credito currentCredito;
 
     public DatosCreditoController(DatosCreditosView view) {
         this.view = view;
+        currentCredito = null;
         this.view.txtCedula.addActionListener(this);
         this.view.btnMostrar.addActionListener(this);        
-        
+        this.view.btnExportar.addActionListener(this);
+        this.view.btnSendEmail.addActionListener(this);
     }
     
     @Override
@@ -65,6 +71,40 @@ public class DatosCreditoController implements ActionListener{
             }
             
         }
+        if(e.getSource() == view.btnExportar) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Selecciono carpeta de exportacion");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            if(chooser.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
+                try {
+                    String ROUTE_PATH = chooser.getCurrentDirectory().getPath().replace("\\", "/");
+                    System.out.println(ROUTE_PATH);
+                    
+                    Solicitante current = SolicitanteDAO.obtenerSolicitanteById(Integer.parseInt(view.txtCedula.getText()));
+                    String info = this.currentCredito.toString()+"\n\n" + current.toString();
+                    PdfApi exportPdf = new PdfApi(ROUTE_PATH+"/dataExport.pdf", view.jtAmortizacion,info);
+                } catch ( DAOException |IOException   |ClassNotFoundException  ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+            
+        }
+        if(e.getSource() == view.btnSendEmail) {
+            try {
+                Solicitante current = SolicitanteDAO.obtenerSolicitanteById(Integer.parseInt(view.txtCedula.getText()));
+                String info = this.currentCredito.toString()+"\n\n" + current.toString();
+                PdfApi exportPdf = new PdfApi("data.pdf", view.jtAmortizacion,info);
+                MailingApi.sendMailWithText(current.getEmail(), current.toString());
+            } catch (DAOException |IOException   |ClassNotFoundException  ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Exception ex) {
+                Logger.getLogger(DatosCreditoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }
         
     }
     public void mostrarAmortizacion() throws DAOException, IOException, ClassNotFoundException{
@@ -88,7 +128,7 @@ public class DatosCreditoController implements ActionListener{
                         this.view.txtEstado.setText("Rechazado");
                     }
                     ArrayList<double[]> info = item.mostrarAmortizacion();
-
+                    currentCredito = item;
                     for (int i=0; i<info.size(); i++){
                        
                        Object[] row= {info.get(i)[0],info.get(i)[1],info.get(i)[2],info.get(i)[3],info.get(i)[4]};

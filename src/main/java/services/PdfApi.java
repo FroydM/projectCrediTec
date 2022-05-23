@@ -9,15 +9,19 @@ import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfXrefTable;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import javax.swing.JTable;
 
 
 /**
@@ -29,14 +33,21 @@ public class PdfApi {
     PdfWriter pdfWriter;
     PdfDocument pdfDocument;
     Document document; 
-    public PdfApi(String path) throws FileNotFoundException {
+    JTable information;
+    String detailInformacion;
+    public PdfApi(String path,JTable table,String detail) throws FileNotFoundException {
         this.PATH = path;
         pdfWriter = new PdfWriter(path);
+        detailInformacion = detail;
         pdfDocument = new PdfDocument(pdfWriter);
         document = new Document(pdfDocument);
         pdfDocument.setDefaultPageSize(PageSize.LETTER);
+        this.information= table;
         
         addHeader();
+        document.add(new Paragraph("\n\n"));
+        addTable();
+        addDetailInfo();
         document.close();
         System.out.println("PDF create");
     }
@@ -66,5 +77,28 @@ public class PdfApi {
                 
         document.add(table);
         
+    }
+    
+    private void addTable(){
+        Table table = new Table(information.getColumnCount());
+        
+        for(int column = 0;column < information.getColumnCount() ; column++) {
+            table.addHeaderCell(new Cell().add(new Paragraph(information.getColumnName(column))));
+        }
+        
+        for(int row = 0; row<information.getRowCount();row++) {
+            for(int column = 0; column < information.getColumnCount();column++){
+                table.addCell(new Cell().add(new Paragraph(information.getValueAt(row, column).toString())));
+            }
+        }
+        document.add(table);
+    }
+    
+    private void addDetailInfo(){
+        document.add(new Paragraph("\n\n"+detailInformacion));
+    }
+    
+    public void setDetailInfo(String infomation){
+        this.detailInformacion = infomation;
     }
 }

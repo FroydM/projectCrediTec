@@ -17,6 +17,9 @@ public class CreditoPersonal extends Credito {
     public CreditoPersonal(String pRazonCredito, double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,double salario){
         super(TipoCredito.PERSONAL, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_FIJA);
         this.razonCredito = pRazonCredito;
+        if(verificarSalario(salario) && !((pMoneda == Moneda.COLONES &&(monto>3000000 || pPlazoMeses>60)) || (pMoneda== Moneda.DOLARES && (monto>5000 || pPlazoMeses>60)))) {
+            setEstado(Estado.PREAPROBADO);
+        }
     }
     
     public boolean verificarSalario(double salario){
@@ -50,5 +53,11 @@ public class CreditoPersonal extends Credito {
 
     public void setRazonCredito(String razonCredito) {
         this.razonCredito = razonCredito;
+    }
+    @Override
+    public String toString(){
+        String msg = super.toString();
+        msg += "Razon de credito: "+ getRazonCredito()+"\n";
+        return msg;
     }
 }

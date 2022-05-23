@@ -32,6 +32,9 @@ public class CreditoHipotecarioVivienda extends Credito {
         super(TipoCredito.HIPOTECARIOVIVIENDA, pMonto, pPlazoMeses, pInteresAnual, pMoneda ,TipoTasa.TASA_INDEXADA);
         this.ingresoFamiliar = pIngresoFamiliar;
         this.vivienda = pVivienda;
+        if(!((pMoneda == Moneda.COLONES &&(monto>150000000 || pPlazoMeses>360)) || (pMoneda== Moneda.DOLARES && (monto>230000 || pPlazoMeses>360)))){
+            setEstado(Estado.PREAPROBADO);
+        }
     }
     
     @Override
@@ -112,5 +115,11 @@ public class CreditoHipotecarioVivienda extends Credito {
     public ArrayList<double[]> mostrarAmortizacion() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    @Override
+    public String toString(){
+        String msg = super.toString();
+        msg += "Ingreso familiar: " + getIngresoFamiliar()+"\n";
+        msg += "SolicitaBono: " + vivienda+"\n";
+        return msg;
+    }
 }

@@ -1,4 +1,4 @@
-/*
+  /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -19,7 +19,9 @@ public class CreditoHipotecarioTerreno extends Credito {
     public CreditoHipotecarioTerreno(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda){
 
         super(TipoCredito.HIPOTECARIOTERRENO, pMonto, pPlazoMeses, pInteresAnual, pMoneda,TipoTasa.TASA_INDEXADA);
-
+        if(!((pMoneda == Moneda.COLONES &&(monto>150000000 || pPlazoMeses>360)) || (pMoneda== Moneda.DOLARES && (monto>230000 || pPlazoMeses>360)))){
+            setEstado(Estado.PREAPROBADO);
+        }
         
     }
     

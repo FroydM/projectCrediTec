@@ -36,6 +36,8 @@ public class DatosCreditosView extends javax.swing.JPanel {
         btnMostrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtEstado = new javax.swing.JTextField();
+        btnExportar = new javax.swing.JButton();
+        btnSendEmail = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -103,20 +105,26 @@ public class DatosCreditosView extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
         jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 270, -1));
 
+        btnExportar.setText("Exportar to pdf");
+        jPanel1.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, -1, -1));
+
+        btnSendEmail.setText("Enviar to email");
+        jPanel1.add(btnSendEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 400, 130, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,7 +138,9 @@ public class DatosCreditosView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnExportar;
     public javax.swing.JButton btnMostrar;
+    public javax.swing.JButton btnSendEmail;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;

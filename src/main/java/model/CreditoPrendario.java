@@ -21,6 +21,9 @@ public class CreditoPrendario extends Credito {
 
         this.prenda = prenda;
         this.valorPrenda = valorPrenda;
+        if(verificarPrenda() && !((pMoneda == Moneda.COLONES &&(monto>30000000 || pPlazoMeses>84)) || (pMoneda== Moneda.DOLARES && (monto>45000 || pPlazoMeses>84)))){
+            setEstado(Estado.PREAPROBADO);
+        }
 
     }
     
@@ -54,5 +57,12 @@ public class CreditoPrendario extends Credito {
         return valorPrenda;
     }
     
+    @Override
+    public String toString(){
+        String msg = super.toString();
+        msg += "Prenda: "+ prenda+"\n";
+        msg += "Valor de prenda: "+valorPrenda +"\n";
+        return msg;
+    }
     
 }

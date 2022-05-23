@@ -18,7 +18,7 @@ abstract public class Credito implements Serializable{
     private int plazo; //por qué double?
     private Moneda moneda;
     private double ingresoFamiliar;
-    private Estado estado;
+    private Estado estado  = Estado.RECHAZADO;
     private LocalDate fechaSolicitud;
     private double evaluo;
     protected double formalizacion;//LO CAMBIE 
@@ -409,7 +409,25 @@ abstract public class Credito implements Serializable{
     public static int getAuxid() {
         return auxid;
     }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public void setId(String id) {
+        this.id = "CRE000"+id;
+    }
     
+    
+    
+    @Override
+    public String toString() {
+        String msg= "Monto inicial: "  + getMonto()+"\n";
+        msg += "Monto final: " + getMontoFinal()+"\n";
+        msg += "Tipo de credito: " + tipo.toString()+"\n";
+        msg += "Estado: " + estado.toString()+"\n";
+        return msg;
+    }
    
     
 }

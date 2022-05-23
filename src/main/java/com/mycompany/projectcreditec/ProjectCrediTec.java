@@ -38,7 +38,7 @@ public class ProjectCrediTec {
 
     public static void main(String[] args) throws Exception {
         //System.out.println(services.TasaBasicaPasiva.conectarTBP());
-          
+          System.out.println(TipoCredito.FIDUCIARIO.toString());
          MainView vw = new MainView();
          MainController sC = new MainController(vw);
          vw.setVisible(true);

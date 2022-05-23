@@ -19,15 +19,19 @@ public class CreditoFiduciario extends Credito {
 
         super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FIJA);
 
-        
        fiadores= new ArrayList<>();
+       if((verificarSalarioLiquido() && verificarSalarioBruto()) && !((pMoneda == Moneda.COLONES &&(monto>40000000 || pPlazoMeses>96)) || (pMoneda== Moneda.DOLARES && (monto>60000 || pPlazoMeses>96)))){
+            setEstado(Estado.PREAPROBADO);
+        }
 
     }
     public CreditoFiduciario(double pMonto, int pPlazoMeses, double pInteresAnual, Moneda pMoneda,ArrayList<Fiador> fiadores){
         super(TipoCredito.FIDUCIARIO, pMonto, pPlazoMeses, pInteresAnual, pMoneda, TipoTasa.TASA_FIJA);
-        
-        
+
        this.fiadores= fiadores;
+       if(verificarSalarioLiquido() && verificarSalarioBruto()){
+            setEstado(Estado.PREAPROBADO);
+        }
 
     }
     @Override
@@ -83,5 +87,13 @@ public class CreditoFiduciario extends Credito {
         return info;
         
         
+    }
+    @Override
+    public String toString(){
+        String msg= super.toString();
+        for(Fiador cur : fiadores) {
+            msg += cur.toString();
+        }
+        return msg;
     }
 }
