@@ -48,7 +48,7 @@ public class DatosCreditosView extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(listaCreditos);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, 240, 300));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 270, 300));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

@@ -27,6 +27,7 @@ public class SolicitanteController implements ActionListener{
     public SolicitanteController(SolicitanteView view) {
         this.view = view;
         this.view.btnNuevo.addActionListener(this);
+
         listar(this.view.listaSolicitantes);
     }
     
@@ -39,7 +40,7 @@ public class SolicitanteController implements ActionListener{
         if(e.getSource() == view.btnNuevo) {
             agregar();
         }
-        
+
     }
     /**
      * Esta funcion se encarga de listar los solicitantes registrados en una lista especifica.

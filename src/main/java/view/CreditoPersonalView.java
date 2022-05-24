@@ -31,16 +31,12 @@ public class CreditoPersonalView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtRazon = new javax.swing.JTextField();
-        btnVerificar = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Razón:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
         jPanel1.add(txtRazon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 230, -1));
-
-        btnVerificar.setText("Verificar");
-        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,7 +58,6 @@ public class CreditoPersonalView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnVerificar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField txtRazon;

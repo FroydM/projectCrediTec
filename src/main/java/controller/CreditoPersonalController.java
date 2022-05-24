@@ -17,16 +17,12 @@ public class CreditoPersonalController implements ActionListener{
     
     public CreditoPersonalController(CreditoPersonalView view) {
         this.view = view;
-        this.view.btnVerificar.addActionListener(this);
+        
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == this.view.btnVerificar) {
-            System.out.println("Se apreto el boton miedo :D ");
-            leerDato();
-            
-        }
+
     }
     
     private void leerDato(){

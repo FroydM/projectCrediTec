@@ -28,7 +28,6 @@ public class CreditoView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         pnMainPanel = new javax.swing.JTabbedPane();
         panelDatosGenerales = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,26 +54,20 @@ public class CreditoView extends javax.swing.JPanel {
 
         btnGuardar.setText("Guardar");
 
-        jButton2.setText("jButton2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(588, Short.MAX_VALUE)
                 .addComponent(btnGuardar)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2)
-                .addGap(19, 19, 19))
+                .addGap(120, 120, 120))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(jButton2))
+                .addComponent(btnGuardar)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -192,7 +185,6 @@ public class CreditoView extends javax.swing.JPanel {
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cbTipoCredito;
     public javax.swing.JComboBox<String> cbxMoneda;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

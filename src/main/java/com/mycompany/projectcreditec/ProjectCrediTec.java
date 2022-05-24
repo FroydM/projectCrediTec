@@ -78,14 +78,23 @@ public class ProjectCrediTec {
         getSolicitante2.agregarCreditoPersonal(50000, 10, 16, DOLARES,"COMPRA CARRO"); 
         SolicitanteDAO.actualizarSolicitanteById(getSolicitante2);
         
-        */
+        
    
         Solicitante newSolicitante3 = new Solicitante(123, "Prueba", "q", "q", 20000000, 18000000, 84934434, "p@gmail.com", "Cartago", "Paraiso", "Paraiso", "En una casa");
         SolicitanteDAO.guardarSolicitante(newSolicitante3);
         Solicitante getSolicitante3 = SolicitanteDAO.obtenerSolicitanteById(123);
         getSolicitante3.agregarCreditoHipotecarioTerreno(1000000,5,15,Moneda.COLONES);//no califica
-        //getSolicitante3.agregarCreditoPersonal(10000, 10, 16, Moneda.DOLARES,"COMPRA CARRO"); SolicitanteDAO.actualizarSolicitanteById(getSolicitante3);*/
+        //getSolicitante3.agregarCreditoPersonal(10000, 10, 16, Moneda.DOLARES,"COMPRA CARRO"); SolicitanteDAO.actualizarSolicitanteById(getSolicitante3);
         SolicitanteDAO.actualizarSolicitanteById(getSolicitante3);
+        
+        Solicitante newSolicitante4 = new Solicitante(24, "Prueba", "q", "q", 20000000, 18000000, 84934434, "p@gmail.com", "Cartago", "Paraiso", "Paraiso", "En una casa");
+        SolicitanteDAO.guardarSolicitante(newSolicitante4);
+        
+        Solicitante getSolicitante4 = SolicitanteDAO.obtenerSolicitanteById(24);
+        getSolicitante4.agregarCreditoHipotecarioVivienda(30000000, 5, 5, COLONES, 5, 1650000, 'S');
+        
+        SolicitanteDAO.actualizarSolicitanteById(getSolicitante4);
+*/
     }
 
 }

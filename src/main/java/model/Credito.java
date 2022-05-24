@@ -22,12 +22,12 @@ abstract public class Credito implements Serializable{
     private LocalDate fechaSolicitud;
     private double evaluo;
     protected double formalizacion;//LO CAMBIE 
-    private double honorario;
+    protected double honorario;
     private double interesAnual;
     private double porcentajeInteres;
     private TipoTasa tipoTasa;
     protected final double porcentajeEvaluo = 0.0065;
-    private final double honorarioMinimo = 60500;
+    protected final double honorarioMinimo = 60500;
     static private int auxid = 0;
     
     /**

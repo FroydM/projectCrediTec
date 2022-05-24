@@ -28,18 +28,13 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         btnGestionSolicitantes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         btnSolicitudCredito = new javax.swing.JMenuItem();
         btnInfoCredito = new javax.swing.JMenuItem();
-        tabla = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jMenu1.setText("Archivo");
-        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Solicitantes");
 
@@ -53,11 +48,13 @@ public class MainView extends javax.swing.JFrame {
         btnSolicitudCredito.setText("Solicitud");
         jMenu3.add(btnSolicitudCredito);
 
-        btnInfoCredito.setText("Mostrar creditos");
+        btnInfoCredito.setText("Información");
+        btnInfoCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoCreditoActionPerformed(evt);
+            }
+        });
         jMenu3.add(btnInfoCredito);
-
-        tabla.setText("tabla");
-        jMenu3.add(tabla);
 
         jMenuBar1.add(jMenu3);
 
@@ -76,6 +73,10 @@ public class MainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInfoCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoCreditoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInfoCreditoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,11 +117,9 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionSolicitantes;
     public javax.swing.JMenuItem btnInfoCredito;
     public javax.swing.JMenuItem btnSolicitudCredito;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JTabbedPane mainPanel;
-    public javax.swing.JMenuItem tabla;
     // End of variables declaration//GEN-END:variables
 }

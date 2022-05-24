@@ -28,8 +28,6 @@ public class SolicitanteView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
-        btnBorrar = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnInformacionPersonal = new javax.swing.JPanel();
@@ -64,13 +62,9 @@ public class SolicitanteView extends javax.swing.JPanel {
         listaSolicitantes = new javax.swing.JList<>();
 
         btnNuevo.setText("Nuevo");
-
-        btnBorrar.setText("Borrar");
-
-        btnCerrar.setText("Cerrar");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -79,22 +73,15 @@ public class SolicitanteView extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(577, Short.MAX_VALUE)
+                .addContainerGap(645, Short.MAX_VALUE)
                 .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBorrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCerrar)
-                .addGap(55, 55, 55))
+                .addGap(155, 155, 155))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -338,14 +325,12 @@ public class SolicitanteView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioLiquidoActionPerformed
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarActionPerformed
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnBorrar;
-    public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnNuevo;
     public javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;

@@ -5,6 +5,7 @@
 package controller;
 
 import dao.SolicitanteDAO;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -30,10 +31,11 @@ public class MainController implements ActionListener{
     
     public MainController(MainView view) {
         this.view = view;
+        this.view.setExtendedState(MAXIMIZED_BOTH);
         this.view.btnGestionSolicitantes.addActionListener(this);
         this.view.btnSolicitudCredito.addActionListener(this);
         this.view.btnInfoCredito.addActionListener(this);
-        this.view.tabla.addActionListener(this);
+        
     }
     
     @Override
@@ -51,7 +53,7 @@ public class MainController implements ActionListener{
         }
         
         if(e.getSource() == view.btnSolicitudCredito) {
-
+            
             try {
                int cedula = Integer.parseInt(JOptionPane.showInputDialog("Digite su número de cédula:"));
                

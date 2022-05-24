@@ -37,12 +37,59 @@ public class CreditoHipotecarioVivienda extends Credito {
         }
     }
     
+
+    public double costoHonorariosVivienda(){
+        
+        double bono= calcularBonoVivienda();
+        double montoFinal = monto-bono;
+        double calculoHonorario=0;
+
+        honorario = montoFinal*0.02;
+               
+        if(honorario<60500){     
+           
+            return honorarioMinimo;
+        }
+
+        if(honorario>60500 && montoFinal<=11000000 ){
+            calculoHonorario+= montoFinal*0.02;
+        } 
+              
+        if(montoFinal>11000000 ){
+             calculoHonorario+= 11000000*0.02;
+        }        
+       
+        if (montoFinal >11000000 && montoFinal <= 16500000){
+            calculoHonorario+= (montoFinal-11000000)*0.015;    
+        }
+        
+        if(montoFinal>16500000 ){
+             calculoHonorario+= (16500000-11000000)*0.015;  
+        }  
+        
+        if (montoFinal >16500000 && montoFinal <= 33000000){
+            calculoHonorario+= (montoFinal-16500000)*0.0125;
+        }
+        if(montoFinal>33000000) {
+            calculoHonorario += (33000000-16500000)*0.0125;
+           }
+        if(montoFinal > 33000000){
+            calculoHonorario+= (montoFinal-33000000)*0.01;   
+        }
+        honorario=calculoHonorario;
+        
+       return honorario; 
+       
+    }
+   
     @Override
     public double costoFormalizacion(){
+        double bono= calcularBonoVivienda();
 
         super.formalizacion = (monto-bono)*0.0075;
-  
+
         return formalizacion;
+         
     } 
     
     /**
@@ -51,13 +98,12 @@ public class CreditoHipotecarioVivienda extends Credito {
      */
     @Override
     public double calculoMontoFinal(){
+        double bono= calcularBonoVivienda();
         
         if (vivienda == 'S'){
 
-            montoFinal= (monto-bono)+costoAvaluo()+costoFormalizacion()+costoHonorarios();
-            System.out.println("Costo avaluo"+costoAvaluo());
-            System.out.println("Costo formalizacion: " +costoFormalizacion());
-            System.out.println("horonario: " + costoHonorarios());
+            montoFinal= (monto-bono)+costoAvaluo()+costoFormalizacion()+costoHonorariosVivienda();
+            
             return montoFinal;
         }else{
             montoFinal= monto+costoAvaluo()+costoFormalizacion()+costoHonorarios();
@@ -68,6 +114,7 @@ public class CreditoHipotecarioVivienda extends Credito {
     }
     @Override
     public double costoAvaluo(){
+        double bono= calcularBonoVivienda();
         return ((monto-bono)*0.0065);
     }
 
